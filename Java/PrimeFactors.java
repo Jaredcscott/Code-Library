@@ -2,9 +2,18 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class PrimeFactors {
+	/*
+	 * This class will return a list of the prime factors of a number 
+	 * ARGUMENTS:
+	 * 	Integer: The integer that you would like to find the prime factors for 
+	 *
+	 * OUTPUT:
+	 *	Printed Array: An array holding all of the prime factors of the input number
+	 */
+	
 	public static void main(String[] args) {
 		ArrayList<Long> factors = new ArrayList<Long>();
-		long num = 600851475143L;
+		long num = Long.parseLong(args[0]);
 		for (long i = 1; i <= Math.sqrt(num); i++) {
 			if (num % i == 0 && factors.contains(i) == false && factors.contains(num/i) == false) {
 				factors.add(i);
