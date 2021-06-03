@@ -7,28 +7,23 @@ import java.util.Queue;
 
 public class Demo_Process_Scheduler {
 	
-    private final static int CPU_COUNT = 1; //Used to determine how many thread will be used  
+    private final static int CPU_COUNT = 1; //Used to determine how many threads will be used  
 
     public static void main(String[] args) {
-        System.out.println("---------------------------------------------------------");
-        demoFCFS();
-        System.out.println();
+        System.out.println("\n---------------------------------------------------------");
+        demoFCFS(); //Demo for First come First Serve
 
-        System.out.println("---------------------------------------------------------");
-        demoSJF();
-        System.out.println();
+        System.out.println("\n---------------------------------------------------------");
+        demoSJF(); //Demo for Shortest Remaining Job
 
-        System.out.println("---------------------------------------------------------");
-        demoSRTF();
-        System.out.println();
+        System.out.println("\n---------------------------------------------------------");
+        demoSRTF(); //Demo for Shortest Remaining Time First
 
-        System.out.println("---------------------------------------------------------");
-        demoPriority();
-        System.out.println();
+        System.out.println("\n---------------------------------------------------------");
+        demoPriority(); //Demo for Priority 	
 
-        System.out.println("---------------------------------------------------------");
-        demoRR();
-        System.out.println();
+        System.out.println("\n---------------------------------------------------------");
+        demoRR();		//Demo for Round Robin 
     }
 
     /**
