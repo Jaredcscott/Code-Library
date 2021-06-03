@@ -1,0 +1,42 @@
+' This is a collection of useful Subroutines, Functions and Structures 
+
+' ---------------------SUBROUTINES---------------------
+
+Sub InsertionSort (DataArray(<Count Of Elements>))
+  ' This Subroutine will sort the given array of integers
+  'NOTE: REPLACE <Count Of Elements> WITH THE APPROPRIATE VALUE
+  Dim IndexOuter                                        'Index for outer For loop (Each element in input array
+  Dim IndexInner                                        'Index for inner While loop (backtracks from current element, inserting the element when appropriate 
+  Dim TempVal                                           'Temp value used to store an element's value during swapping
+  For IndexOuter = 2 To <CountOf Elements> Step 1       'For eachelement in input array
+    IndexInner = IndexOuter                             'Start from current element
+    While IndexInner > 0 AND (DataArray(IndexInner) < DataArray(IndexInner - 1))
+      TempVal = DataArray(IndexInner)                   'Storing value for later 
+      DataArray(IndexInner) = DataArray(IndexInner - 1) 'Swapping values (to be in ascending order) 
+      DataArray(IndexInner-1) = TempVal                 'Restoring value from temp variable 
+      IndexInner = IndexInner - 1                       'Crawling back to the beginning of array
+    Wend
+  Next
+  'The input array has been altered and is now sorted
+EndSub
+
+' ---------------------FUNCTIONS---------------------
+
+Function GetDistance (xa,ya,xb,yb)
+  'This Function will return the distance between the two given points 
+  'Implements (a^2 + b^2)^(1/2) = c
+  Dim DeltaX, Deltay, XSQR, YSQR
+  DeltaX = ABS (xa - xb)      'Absolute distance in x dimension 
+  Deltay = ABS (ya - yb)      'Absolute distance in y dimension 
+  XSQR = PWR (DeltaX,2)       'Squareing the x distance 
+  YSQR = PWR (Deltay,2)       'Squareing the y distance 
+  Return(SQR (XSQR+YSQR))     'Returning the square root of the sum of distances 
+EndFunction
+
+' ---------------------STRUCTURES---------------------
+
+StructureType (Coordinate)
+'This structure can be used to store x and y coordinate attributes 
+X As Float
+Y As Float
+EndStructureType
