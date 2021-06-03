@@ -1,4 +1,15 @@
+#@author Jared Scott
+
 def factors(n):
+    '''
+        This function will return a list containing the factors for the number 'n'. 
+        
+        Arguments: 
+            (Integer) n: The number for which you would like to find the factors
+            
+        Output:
+            A list containing the factors for the specified number
+    '''
     results = []
     for i in range(1, int(math.sqrt(n)) + 1):
         if n % i == 0:

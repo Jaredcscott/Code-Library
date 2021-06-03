@@ -1,6 +1,11 @@
 import java.util.ArrayList;
 import java.util.Collections;
 
+/*
+ * @author Jared Scott
+ * 
+ */
+ 
 public class PrimeFactors {
 	/*
 	 * This class will return a list of the prime factors of a number 
