@@ -1,0 +1,9 @@
+'Public a_long(3) As Long = {&H41424344,&H45464748,&H21000000}  'CR6 Big Endian
+Public a_long(3) As Long = {&H44434241,&H48474645,&H00000021}   'CR300 Little Endian
+
+BeginProg
+  Scan (5,Sec,3,0)
+    SerialOpen (COMRS232,115200,3,0,50)
+    SerialOutBlock (COMRS232,a_long(),12)
+  NextScan
+EndProg
