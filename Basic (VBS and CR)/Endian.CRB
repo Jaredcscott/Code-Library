@@ -1,5 +1,7 @@
-'Public a_long(3) As Long = {&H41424344,&H45464748,&H21000000}  'CR6 Big Endian
-Public a_long(3) As Long = {&H44434241,&H48474645,&H00000021}   'CR300 Little Endian
+'@author Skyler Hansen
+
+'Public a_long(3) As Long = {&H41424344,&H45464748,&H21000000}  'Big Endian
+Public a_long(3) As Long = {&H44434241,&H48474645,&H00000021}   'Little Endian
 
 BeginProg
   Scan (5,Sec,3,0)
