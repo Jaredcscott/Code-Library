@@ -1,7 +1,7 @@
 void read_csv( void ) {
 	
 	//Start of csv reader
-	std::string filename = "INSERT PATH TO FILE"; 	           //<-----------------------CHANGE VALUE HERE
+	std::string filename = "INSERT PATH TO FILE"; 	               //<-----------------------CHANGE VALUE HERE
 	std::ifstream file( filename, std::ios::in );
 	if( !file )
 	{ 
@@ -18,11 +18,11 @@ void read_csv( void ) {
 
 		if( data.size() != <Insert Expected Data Array Size> ) //<-----------------------CHANGE VALUE HERE 
 		{
-			//																		   \/CHANGE VALUE HERE\/
+			//							                  \/CHANGE VALUE HERE\/
 			std::cout << "Error! Importing data from a CSV file expects each row to be <INSERT DATA FORMAT>." << std::endl;  
 			exit(-1);
 		}
-		//Insert logic to interact with the data 				 <-----------------------CHANGE VALUE HERE
+		//Insert logic to interact with the da                    <-----------------------CHANGE VALUE HERE
 	}
 	file.close();  //Closing file 
 }
