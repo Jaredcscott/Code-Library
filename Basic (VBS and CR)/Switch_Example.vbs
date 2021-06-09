@@ -31,5 +31,5 @@ Sub Generate_Path
     End Select
 
     'Adding the server path to the determined Checkbook location.
-    pathString = (("\\<path>\<to>\<file>\" & yearString) & ("\" & pathString)) & ".xls"
+	pathString = (("\\<path>\<to>\<file>\" & yearString) & ("\" & pathString)) & ".<file extension>"
 EndSub
