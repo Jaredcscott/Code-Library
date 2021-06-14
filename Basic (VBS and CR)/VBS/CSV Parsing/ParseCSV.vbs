@@ -3,7 +3,7 @@ Set fso = CreateObject("Scripting.FileSystemObject")
 
 'Open the file for reading text. This script is expecting a csv file with this format: 
 '<name>,<age>,<Favorite color>
-Set file = fso.OpenTextFile ("C:\Users\jscott\Desktop\Code-Library\Basic (VBS and CR)\CSV Parsing\inputFile.csv", 1)	'Adjust path here the 1 means for reading 
+Set file = fso.OpenTextFile ("C:\Users\jscott\Desktop\Code-Library\Basic (VBS and CR)\VBS\CSV Parsing\inputFile.csv", 1)	'Adjust path here the 1 means for reading 
 
 Dim outString 'This dim will be used to store the results
 
