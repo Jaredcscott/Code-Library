@@ -6,8 +6,9 @@
   \_____\___/ \__,_|\___|      |______|_|_.__/|_|  \__,_|_|   \__, |  
                                                                __/ |  
                                                               |___/</pre> 
-                                                              
-## This is a public repository where I will store useful code snippets, examples, and algorithms which I have gathered over the course of my career as a programmer 
+### Main Author Jared Scott (Other authors indicated within relevant files)                                                              
+
+## This is a public repository where I will store useful code snippets, examples, and algorithms which I have gathered over the course of my time as a programmer. 
 
 ### -Each of the subfolders is labeled by the language of the code contained there-in. 
-### -Effort has been made to add explanatory comments, but if there are errors please feel free to comment needed corrections or adjustments. 
+### -Effort has been made to add explanatory comments, descriptive titles, and validation of the desired result but if there are errors please feel free to comment needed corrections or adjustments. 
