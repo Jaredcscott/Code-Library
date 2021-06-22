@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import math
 '''
+    @Author Jared Scott 
     This generator will generate tree like fractal structures. 
     The coordinates will be displayed after generation on a scatter plot, but the actual coordinates will be stored in a file called coords.csv
     
