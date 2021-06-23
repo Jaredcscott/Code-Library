@@ -1,8 +1,9 @@
 '''
     @Author Jared Scott 
-    This function will return true if the given key exists within the list.
-
+    This function will return the index of the key if the given key exists within the list.
+    If the key does not exist this function will return a string "Key Not Found"
 '''
+
 def main():
     list = [2,6,5,7,8,12,34,65,11,77,9,4,32]
     result = binarySearch(122,list)
