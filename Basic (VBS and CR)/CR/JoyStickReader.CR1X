@@ -1,0 +1,48 @@
+'Date:
+'Program author: Jared Scott
+
+Public stageKeyPressed As Boolean, joyKeyPressed As Boolean
+Public xVolt, yVolt, joySwitchVolt, stageSwitchVolt, throttleVolt 
+Public keyboardSignal As String
+Public outputString As String * 50
+
+'Main Program
+BeginProg
+  Do 
+    VoltSe (xVolt,1,mV5000,1,1,0,60,1.0,0)
+    VoltSe (yVolt,1,mV5000,2,1,0,60,1.0,0)
+    VoltSe (joySwitchVolt,1,mV5000,3,1,0,60,1.0,0)
+    VoltSe (stageSwitchVolt,1,mV5000,4,1,0,60,1.0,0)
+    VoltSe (throttleVolt,1,mV5000,5,1,0,60,1.0,0)
+    If stageSwitchVolt > 4600 Then
+      stageKeyPressed = True
+    Else
+      stageKeyPressed = False  
+    EndIf
+    If joySwitchVolt < 250 Then
+      joyKeyPressed = True 
+    Else
+      joyKeyPressed = False 
+    EndIf
+    If (xVolt > 2400 AND xVolt < 2700) AND (yVolt > 2400 AND yVolt < 2700)  Then
+      keyboardSignal = ""
+    ElseIf xVolt < 1500 AND yVolt > 3500 Then
+      keyboardSignal = "SD"
+    ElseIf (xVolt > 1500 AND xVolt < 3500) AND yVolt > 2500 Then
+      keyboardSignal = "D"
+    ElseIf xVolt > 3500 AND yVolt > 3500 Then
+      keyboardSignal = "WD"
+    ElseIf xVolt > 2500 AND (yVolt > 1500 AND yVolt < 3500) Then
+      keyboardSignal = "W"
+    ElseIf xVolt > 3500 AND yVolt < 1500 Then
+      keyboardSignal = "WA"
+    ElseIf (xVolt > 1500 AND xVolt < 3500) AND yVolt < 2500 Then
+      keyboardSignal = "A"
+    ElseIf xVolt < 1500 AND yVolt < 1500 Then
+      keyboardSignal = "SA"
+    ElseIf xVolt < 2500 AND (yVolt > 1500 AND yVolt < 3500) Then
+      keyboardSignal = "S"
+    EndIf
+    outputString = "Dir:" & keyboardSignal & "," & "Stg:" & stageKeyPressed & "," & "Joy:" & joyKeyPressed & "," & "Thr:" & throttleVolt
+  Loop 
+EndProg
