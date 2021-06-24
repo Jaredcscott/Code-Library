@@ -1,0 +1,112 @@
+'Date: 6/24/21
+'Program author: Jared Scott
+
+Public stageKeyPressed As Boolean, joyKeyPressed As Boolean, play As Boolean
+Public snakeX, snakeY, apple1X, apple1Y, apple2X, apple2Y, Score, timeLeft, Message As String * 40
+Dim xVolt, yVolt, joySwitchVolt, stageSwitchVolt, throttleVolt, speed
+'Main Program
+
+Sub PlayGame
+  snakeX = 7
+  snakeY = 7
+  apple1X = 15
+  apple1Y = 10
+  apple2X = 5
+  apple2Y = 13
+  timeLeft = 30
+  play = False 
+  Do Until play = True
+    Message = "Press Button to Play Logger Snake"
+  Loop
+  Message = "Eat Apples Until The Time Runs Out"
+  Do Until timeLeft = 0
+    Delay(1,speed,mSec)
+    VoltSe (xVolt,1,mV5000,1,False,20,30000,1.0,0)
+    VoltSe (yVolt,1,mV5000,2,False,20,30000,1.0,0)
+    VoltSe (stageSwitchVolt,1,mV5000,4,False,20,30000,1.0,0)
+    If stageSwitchVolt > 4600 AND (Score > 0) Then
+      timeLeft += 3
+      stageKeyPressed = True
+      Score -= 1  
+      Delay (0,500,mSec)
+    Else
+      stageKeyPressed = False  
+    EndIf
+    If joySwitchVolt < 250 Then
+      joyKeyPressed = True 
+    Else
+      joyKeyPressed = False 
+    EndIf
+    If (xVolt > 2400 AND xVolt < 2700) AND (yVolt > 2400 AND yVolt < 2700)  Then
+      'Rest
+    ElseIf xVolt < 1500 AND yVolt > 3500 Then
+      'Down-Right
+      snakeX = snakeX + .1
+      snakeY = snakeY - .1
+    ElseIf (xVolt > 1500 AND xVolt < 3500) AND yVolt > 2500 Then
+      'Right
+      snakeX = snakeX + .1
+    ElseIf xVolt > 3500 AND yVolt > 3500 Then
+      'Up-Right
+      snakeX = snakeX + .1
+      snakeY = snakeY + .1
+    ElseIf xVolt > 2500 AND (yVolt > 1500 AND yVolt < 3500) Then
+      'Up
+      snakeY = snakeY + .1
+    ElseIf xVolt > 3500 AND yVolt < 1500 Then
+      'Up-Left
+      snakeX = snakeX - .1
+      snakeY = snakeY + .1
+    ElseIf (xVolt > 1500 AND xVolt < 3500) AND yVolt < 2500 Then
+      'Left
+      snakeX = snakeX - .1
+    ElseIf xVolt < 1500 AND yVolt < 1500 Then
+      'Down-Left
+      snakeX = snakeX - .1
+      snakeY = snakeY - .1
+    ElseIf xVolt < 2500 AND (yVolt > 1500 AND yVolt < 3500) Then
+      'Down
+      snakeY = snakeY - .1
+    EndIf
+    If ABS(snakeX - apple1X) < .5 AND ABS(snakeY - apple1Y) < .5 Then
+      Score = Score + 1
+      apple1X = INT((19 - 1 + 1) * RND + 1)
+      apple1Y = INT((19 - 1 + 1) * RND + 1)
+      speed -= 2
+    ElseIf ABS(snakeX - apple2X) < .5 AND ABS(snakeY - apple2Y) < .5 Then
+      Score = Score + 1
+      apple2X = INT((19 - 1 + 1) * RND + 1)
+      apple2Y = INT((19 - 1 + 1) * RND + 1)
+      speed -= 2
+    EndIf
+    If snakeX > 20 Then 
+      snakeX = 0 
+    ElseIf snakeX < 0 Then 
+      snakeX = 20
+    EndIf
+    If snakeY > 20 Then 
+      snakeY = 0 
+    ElseIf snakeY < 0 Then 
+      snakeY = 20
+    EndIf
+  Loop
+  play = false    
+EndSub 
+
+BeginProg 
+  speed = 50
+  Do 
+    PlayGame
+  Loop  
+  SlowSequence
+    Scan (1,Sec,0,0)
+      If timeLeft > 0 and play = true Then
+       timeLeft = timeLeft - 1
+      EndIf
+      If timeLeft = 0 Then 
+        Message = "Times Up. Play Again?"
+      EndIf    
+    NextScan
+  EndSequence    
+EndProg
+

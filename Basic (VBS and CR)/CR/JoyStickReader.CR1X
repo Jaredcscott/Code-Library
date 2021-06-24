@@ -2,13 +2,38 @@
 'Program author: Jared Scott
 
 Public stageKeyPressed As Boolean, joyKeyPressed As Boolean
-Public xVolt, yVolt, joySwitchVolt, stageSwitchVolt, throttleVolt 
-Public keyboardSignal As String
-Public outputString As String * 50
+Dim xVolt, yVolt, joySwitchVolt, stageSwitchVolt, throttleVolt, 
+Public leftCount, rightCount
+Dim keyboardSignal As String
+Dim outputString As String * 50
+Public display As String * 50
+
+Sub UpdateDisplay
+  Dim newDisplay As String 
+  newDisplay = "" 
+  Dim count 
+  count = 0
+  While count < leftCount
+    newDisplay = "_" & newDisplay 
+    count = count + 1
+  Wend
+  newDisplay = newDisplay & "O"
+  count = 0
+  While count < rightCount
+    newDisplay = newDisplay & "_"
+    count = count + 1
+  Wend
+  Replace (display,display,"")
+  display = "" & newDisplay
+EndSub 
 
 'Main Program
 BeginProg
+  leftCount = 7
+  rightCount = 7
+  display = "_______O_______"
   Do 
+  'Scan (250000,uSec,3,0)
     VoltSe (xVolt,1,mV5000,1,1,0,60,1.0,0)
     VoltSe (yVolt,1,mV5000,2,1,0,60,1.0,0)
     VoltSe (joySwitchVolt,1,mV5000,3,1,0,60,1.0,0)
@@ -30,6 +55,8 @@ BeginProg
       keyboardSignal = "SD"
     ElseIf (xVolt > 1500 AND xVolt < 3500) AND yVolt > 2500 Then
       keyboardSignal = "D"
+      leftCount = leftCount + 1
+      rightCount = rightCount - 1
     ElseIf xVolt > 3500 AND yVolt > 3500 Then
       keyboardSignal = "WD"
     ElseIf xVolt > 2500 AND (yVolt > 1500 AND yVolt < 3500) Then
@@ -38,11 +65,15 @@ BeginProg
       keyboardSignal = "WA"
     ElseIf (xVolt > 1500 AND xVolt < 3500) AND yVolt < 2500 Then
       keyboardSignal = "A"
+      leftCount = leftCount - 1
+      rightCount = rightCount + 1
     ElseIf xVolt < 1500 AND yVolt < 1500 Then
       keyboardSignal = "SA"
     ElseIf xVolt < 2500 AND (yVolt > 1500 AND yVolt < 3500) Then
       keyboardSignal = "S"
     EndIf
     outputString = "Dir:" & keyboardSignal & "," & "Stg:" & stageKeyPressed & "," & "Joy:" & joyKeyPressed & "," & "Thr:" & throttleVolt
+    UpdateDisplay
+  'NextScan
   Loop 
 EndProg
