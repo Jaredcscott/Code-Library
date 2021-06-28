@@ -15,26 +15,30 @@ Sub PlayGame
   apple2X = 5
   apple2Y = 13
   timeLeft = 30
+  speed = 50
   play = False 
   score = 0
   Do Until play = True
+    'Loop waits for user to press play button
     Message = "Press Button to Play Logger Snake"
   Loop
   Message = "Eat Apples Until The Time Runs Out"
   Do Until timeLeft = 0
-    Delay(1,speed,mSec)
-    VoltSe (xVolt,1,mV5000,1,False,20,30000,1.0,0)
-    VoltSe (yVolt,1,mV5000,2,False,20,30000,1.0,0)
-    VoltSe (stageSwitchVolt,1,mV5000,4,False,20,30000,1.0,0)
+    Delay(1,speed,mSec) 'This speed delay sets how quickley the snake moves around the map. 
+    VoltSe (xVolt,1,mV5000,1,False,20,30000,1.0,0) ' Reading x voltage
+    VoltSe (yVolt,1,mV5000,2,False,20,30000,1.0,0) ' Reading y voltage 
+    VoltSe (stageSwitchVolt,1,mV5000,4,False,20,30000,1.0,0) ' Reading contoller button voltage 
     If stageSwitchVolt > 4600 AND (Score > 0) Then
+      'This logic will spend one point to regain 3 seconds of time. 
       timeLeft += 3
       stageKeyPressed = True
       Score -= 1  
-      Delay (0,500,mSec)
+      Delay (0,500,mSec) ' Delay ensures one click only spends one point 
     Else
       stageKeyPressed = False  
     EndIf
     If joySwitchVolt < 250 Then
+      'Insert desired logic for joystick button 
       joyKeyPressed = True 
     Else
       joyKeyPressed = False 
@@ -70,6 +74,7 @@ Sub PlayGame
       'Down
       snakeY -= .1
     EndIf
+    'Point scoring logic 
     If ABS(snakeX - apple1X) < .5 AND ABS(snakeY - apple1Y) < .5 Then
       Score = Score + 1
       apple1X = INT((19 - 1 + 1) * RND + 1)
@@ -81,6 +86,7 @@ Sub PlayGame
       apple2Y = INT((19 - 1 + 1) * RND + 1)
       speed -= 2
     EndIf
+    'Logic for looping around the map
     If snakeX > 20 Then 
       snakeX = 0 
     ElseIf snakeX < 0 Then 
@@ -93,14 +99,14 @@ Sub PlayGame
     EndIf
   Loop
   play = false 
-  CallTable Scoreboard
+  'CallTable Scoreboard
 EndSub 
 
 BeginProg 
-  speed = 50
   Do 
     PlayGame
   Loop  
+  'Slow sequence used for the timer countdown
   SlowSequence
     Scan (1,Sec,0,0)
       If timeLeft > 0 and play = true Then
