@@ -1,3 +1,7 @@
+'''
+    @Author Jared Scott 
+    This function implements thje bubble sort algorithm. 
+'''
 def bubbleSort(inputList):
     didSwap = True
     count = 0
