@@ -3,7 +3,8 @@
 'This program relies on RTMC to play the game. 
 
 Public stageKeyPressed As Boolean, joyKeyPressed As Boolean, play As Boolean
-Public snakeX, snakeY, apple1X, apple1Y, apple2X, apple2Y, Score, timeLeft, Message As String * 40
+Public Message As String * 40
+Public snakeX, snakeY, apple1X, apple1Y, apple2X, apple2Y, Score, timeLeft
 Dim xVolt, yVolt, joySwitchVolt, stageSwitchVolt, throttleVolt, speed
 
 Sub PlayGame
@@ -24,7 +25,7 @@ Sub PlayGame
   Loop
   Message = "Eat Apples Until The Time Runs Out"
   Do Until timeLeft = 0
-    Delay(1,speed,mSec) 'This speed delay sets how quickley the snake moves around the map. 
+    Delay(1,speed,mSec) 'This speed delay sets how quickly the snake moves around the map. 
     VoltSe (xVolt,1,mV5000,1,False,20,30000,1.0,0) ' Reading x voltage
     VoltSe (yVolt,1,mV5000,2,False,20,30000,1.0,0) ' Reading y voltage 
     VoltSe (stageSwitchVolt,1,mV5000,4,False,20,30000,1.0,0) ' Reading contoller button voltage 
