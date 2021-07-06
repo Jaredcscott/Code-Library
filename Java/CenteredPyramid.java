@@ -1,9 +1,7 @@
 /**
  * @ Jared Scott
- * A01203464
- * cs 1410
- *
- * hw 1 Pyramid
+ * This class will construct a pyramid where the center number is always 1. 
+ * The program accepts as input a number representing the desired pyramid height. 
  */
 
 import java.util.Scanner;

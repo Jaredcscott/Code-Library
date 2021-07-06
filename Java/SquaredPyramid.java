@@ -1,6 +1,7 @@
 /**
  * @ Jared Scott
  * This class will produce a pyramid of numbers where the next number in the sequence is the previous number squared. 
+ * This program takes as input a number representing how many lines tall the pyramid is. 
  */
 
 import java.util.Scanner;
