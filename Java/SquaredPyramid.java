@@ -1,9 +1,6 @@
 /**
  * @ Jared Scott
- * A01203464
- * cs 1410
- *
- * hw 1 Pyramid
+ * This class will produce a pyramid of numbers where the next number in the sequence is the previous number squared. 
  */
 
 import java.util.Scanner;
