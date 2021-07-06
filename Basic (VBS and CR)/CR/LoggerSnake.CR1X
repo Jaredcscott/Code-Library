@@ -1,14 +1,21 @@
 'Date: 6/24/21
 'Program author: Jared Scott
-'This program relies on RTMC to play the game. 
+'This program relies on RTMC to play the game.
 
 Public stageKeyPressed As Boolean, joyKeyPressed As Boolean, play As Boolean
 Public Message As String * 40
+Public leaderArray(5) As String * 40
 Public snakeX, snakeY, apple1X, apple1Y, apple2X, apple2Y, Score, timeLeft
-Dim xVolt, yVolt, joySwitchVolt, stageSwitchVolt, throttleVolt, speed
+Dim xVolt, yVolt, joySwitchVolt, stageSwitchVolt, throttleVolt, speed, leaderboard
+
+Alias leaderArray(1) = first
+Alias leaderArray(2) = second
+Alias leaderArray(3) = third
+Alias leaderArray(4) = fourth
+Alias leaderArray(5) = fifth
 
 Sub PlayGame
-  'Initializing game variables 
+  'Initializing game variables
   snakeX = 7
   snakeY = 7
   apple1X = 15
@@ -17,32 +24,32 @@ Sub PlayGame
   apple2Y = 13
   timeLeft = 30
   speed = 50
-  play = False 
-  score = 0
+  play = False
+  Score = 0
   Do Until play = True
     'Loop waits for user to press play button
     Message = "Press Button to Play Logger Snake"
   Loop
   Message = "Eat Apples Until The Time Runs Out"
   Do Until timeLeft = 0
-    Delay(1,speed,mSec) 'This speed delay sets how quickly the snake moves around the map. 
+    Delay(1,speed,mSec) 'This speed delay sets how quickly the snake moves around the map.
     VoltSe (xVolt,1,mV5000,1,False,20,30000,1.0,0) ' Reading x voltage
-    VoltSe (yVolt,1,mV5000,2,False,20,30000,1.0,0) ' Reading y voltage 
-    VoltSe (stageSwitchVolt,1,mV5000,4,False,20,30000,1.0,0) ' Reading contoller button voltage 
+    VoltSe (yVolt,1,mV5000,2,False,20,30000,1.0,0) ' Reading y voltage
+    VoltSe (stageSwitchVolt,1,mV5000,4,False,20,30000,1.0,0) ' Reading contoller button voltage
     If stageSwitchVolt > 4600 AND (Score > 0) Then
-      'This logic will spend one point to regain 3 seconds of time. 
+      'This logic will spend one point to regain 3 seconds of time.
       timeLeft += 3
       stageKeyPressed = True
-      Score -= 1  
-      Delay (0,500,mSec) ' Delay ensures one click only spends one point 
+      Score -= 1
+      Delay (0,500,mSec) ' Delay ensures one click only spends one point
     Else
-      stageKeyPressed = False  
+      stageKeyPressed = False
     EndIf
     If joySwitchVolt < 250 Then
-      'Insert desired logic for joystick button 
-      joyKeyPressed = True 
+      'Insert desired logic for joystick button
+      joyKeyPressed = True
     Else
-      joyKeyPressed = False 
+      joyKeyPressed = False
     EndIf
     If (xVolt > 2400 AND xVolt < 2700) AND (yVolt > 2400 AND yVolt < 2700)  Then
       'Rest
@@ -75,7 +82,7 @@ Sub PlayGame
       'Down
       snakeY -= .1
     EndIf
-    'Point scoring logic 
+    'Point scoring logic
     If ABS(snakeX - apple1X) < .5 AND ABS(snakeY - apple1Y) < .5 Then
       Score = Score + 1
       apple1X = INT((19 - 1 + 1) * RND + 1)
@@ -88,35 +95,45 @@ Sub PlayGame
       speed -= 2
     EndIf
     'Logic for looping around the map
-    If snakeX > 20 Then 
-      snakeX = 0 
-    ElseIf snakeX < 0 Then 
+    If snakeX > 20 Then
+      snakeX = 0
+    ElseIf snakeX < 0 Then
       snakeX = 20
     EndIf
-    If snakeY > 20 Then 
-      snakeY = 0 
-    ElseIf snakeY < 0 Then 
+    If snakeY > 20 Then
+      snakeY = 0
+    ElseIf snakeY < 0 Then
       snakeY = 20
     EndIf
   Loop
-  play = false 
+  play = false
   'CallTable Scoreboard
-EndSub 
+EndSub
 
-BeginProg 
-  Do 
+BeginProg
+  leaderboard = FileOpen ("CPU:leaderboard.txt","a+",-1)
+  FileRead (leaderboard,leaderArray(),270)
+  Do
     PlayGame
-  Loop  
+    Dim I
+    For I = 1 To 5 Step 1
+      Dim splitString(2) As String
+      SplitStr(splitString(1),leaderArray(I),":",1,0)
+      If Score > splitString(2) Then
+        leaderArray(I) = "7/2/21" & ":" & Score
+      EndIf
+    Next
+  Loop
   'Slow sequence used for the timer countdown
   SlowSequence
-    Scan (1,Sec,0,0)
-      If timeLeft > 0 and play = true Then
-       timeLeft -= 1
-      EndIf
-      If timeLeft = 0 Then 
-        Message = "Times Up. Play Again?"
-      EndIf    
-    NextScan
-  EndSequence    
+  Scan (1,Sec,0,0)
+    If timeLeft > 0 AND play = true Then
+      timeLeft -= 1
+    EndIf
+    If timeLeft = 0 Then
+      Message = "Times Up. Play Again?"
+    EndIf
+  NextScan
+  EndSequence
 EndProg
 
