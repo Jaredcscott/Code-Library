@@ -1,0 +1,21 @@
+'Date:
+'Program author:
+
+Public tilting As Boolean
+Public tiltSensor, tiltCount
+'Main Program
+BeginProg
+  
+  Do
+    VoltSe (tiltSensor,1,AutoRange,1,False,20,30000,1.0,0)
+    If tiltSensor > 250 AND tilting Then 
+      tilting = true 
+    Else If tiltSensor > 250  Then 
+      tilting = true
+      tiltCount += 1
+    Else 
+      tilting = false 
+    EndIf
+  Loop
+EndProg
+

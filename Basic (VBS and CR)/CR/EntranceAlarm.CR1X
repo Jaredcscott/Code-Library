@@ -1,0 +1,32 @@
+'Date:
+'Program author:
+
+Public receiving As Boolean, transmitting As Boolean
+Public receiveVolt,tempRec
+'Main Program
+BeginProg
+  transmitting = true
+  Public print
+  Do
+    
+    VoltSe (receiveVolt,1,AutoRange,1,False,20,30000,1.0,0)
+    tempRec = receiveVolt
+    'If transmitting = true Then
+      PortSet (C1 ,1 )
+      Delay(1,500,mSec)
+     ' PulsePort (C1 ,2500)
+    'Else 
+     ' PortSet(C1,0)
+    'EndIf
+    VoltSe (receiveVolt,1,AutoRange,1,False,20,30000,1.0,0)
+    PortSet (C1 ,0 )
+    Delay(1,500,mSec)
+    print = ABS(tempRec - receiveVolt)
+    If ABS(tempRec - receiveVolt) > 5 Then 
+      receiving = true
+    Else
+      receiving = false     
+    EndIf 
+  Loop
+EndProg
+
