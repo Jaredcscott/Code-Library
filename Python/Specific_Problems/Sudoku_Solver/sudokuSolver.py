@@ -1,7 +1,7 @@
 def main():
     ATTEMPTS = 150
-    SOLUTIONS_FILEPATH = "C:\\Users\\jared\\Desktop\\solutions.dat"
-    PUZZLES_FILEPATH = "C:\\Users\\jared\\Desktop\\puzzles.txt"
+    SOLUTIONS_FILEPATH = "C:\\Users\\jscott\\Desktop\\Code-Library\\Python\\Specific_Problems\\Sudoku_Solver\\solutions.dat"
+    PUZZLES_FILEPATH = "C:\\Users\\jscott\\Desktop\\Code-Library\\Python\\Specific_Problems\\Sudoku_Solver\\puzzles.txt"
     
     solutions = loadSols(SOLUTIONS_FILEPATH)
     print(len(solutions)," Solutions Loaded")
@@ -9,21 +9,24 @@ def main():
         for i in range(1,51):
             solutions[i] = False
     puzzles = readPuzzles(PUZZLES_FILEPATH)
-    for puzzle in puzzles:
-        puzStr = puzzle.name.split(" ")[1].strip(' "\'\t\r\n')
-        puzNum = int(puzStr)
-        if str(solutions[puzNum]).strip(' "\'\t\r\n') == "False": 
-            print("\nAttempting: " + puzzle.name)
-            puzzle.solvePuzzle(ATTEMPTS)
-            if puzzle.isSolved():
-                solutions[puzNum] = puzzle.digits
-                puzzle.prettyPrint()
-            else:
-                solutions[puzNum] = False
+    #for puzzle in puzzles:
+    puzzle = puzzles[1]
+    puzStr = puzzle.name.split(" ")[1].strip(' "\'\t\r\n')
+    puzNum = int(puzStr)
+    if str(solutions[puzNum]).strip(' "\'\t\r\n') == "False": 
+        print("\nAttempting: " + puzzle.name)
+        puzzle.solvePuzzle(ATTEMPTS)
+        if puzzle.isSolved():
+            solutions[puzNum] = puzzle.digits
+            puzzle.prettyPrint()
+        else:
+            puzzle.solve2()
+    
     solved = 0
     for puzzle in solutions:
         result = solutions[puzzle]
         if str(result).strip() != "False":
+            
             solved += 1 
             
     print("\n" + str(solved) + "/50 Puzzles Solved!")
@@ -178,7 +181,22 @@ class Puzzle:
             time += 1
             if time == times:
                 print("No Solution Found After " + str(times) + " Attempts")
-                    
+                
+    def solve2(self):
+        times = 1
+        time = 0
+        emptySpaces = 81
+        while time < times:
+            for row in range(9):
+                for col in range(9):
+                    potVals = self.potentialValues(row,col)
+                    print("Row: " + str(row) + " Col: " + str(col) + str(potVals))
+                    if len(potVals) == 1:
+                        self.updateVal(row,col,potVals[0])
+                        
+            time += 1
+        self.prettyPrint()            
+        
     
     def updateVal(self,row,col,val):
         tempList = list(self.rows[row])
@@ -210,9 +228,10 @@ def loadSols(filepath):
     solutions = {}
     file = open(filepath,"r")
     data = file.readlines()
-    for solution in data:
-        curSol = solution.split(":")
-        solutions[int(curSol[0])] = curSol[1]
+    if len(data) > 1:
+        for solution in data:
+            curSol = solution.split(":")
+            solutions[int(curSol[0])] = curSol[1]
     return solutions   
 
 def readPuzzles(filepath):    
