@@ -1,22 +1,56 @@
-
+def main():
+    ATTEMPTS = 150
+    SOLUTIONS_FILEPATH = "C:\\Users\\jared\\Desktop\\solutions.txt"
+    PUZZLES_FILEPATH = "C:\\Users\\jared\\Desktop\\puzzles.txt"
+    
+    solutions = loadSols(SOLUTIONS_FILEPATH)
+    print(len(solutions)," Solutions Loaded")
+    if len(solutions) == 0:
+        for i in range(1,51):
+            solutions[i] = False
+    puzzles = readPuzzles(PUZZLES_FILEPATH)
+    for puzzle in puzzles:
+        puzStr = puzzle.name.split(" ")[1].strip(' "\'\t\r\n')
+        puzNum = int(puzStr)
+        if str(solutions[puzNum]).strip(' "\'\t\r\n') == "False": 
+            print("\nAttempting: " + puzzle.name)
+            puzzle.solvePuzzle(ATTEMPTS)
+            if puzzle.isSolved():
+                solutions[puzNum] = puzzle.digits
+                puzzle.prettyPrint()
+            else:
+                solutions[puzNum] = False
+    solved = 0
+    for puzzle in solutions:
+        result = solutions[puzzle]
+        if str(result).strip() != "False":
+            solved += 1 
+            
+    print("\n" + str(solved) + "/50 Puzzles Solved!")
+    file = open(SOLUTIONS_FILEPATH,"wt")
+    for solution in solutions:
+        file.write(str(solution) + ":" + str(solutions[solution]).strip(' "\'\t\r\n') + "\n")
+    file.close() 
+    
 class Puzzle:
     def __init__(self,name,rows):
         self.name = name.strip()
         self.rows = rows 
-        self.cols = []
-        self.sqrs = []
-        self.__extractCols()
-        self.__extractSqrs()
+        self.cols = self.__extractCols()
+        self.sqrs = self.__extractSqrs()
+        self.digits = ""
        
     def __extractCols(self):
+        cols = []
         for col in range(len(self.rows)):
             curCol = []
             for row in self.rows:
                 curCol.append(row[col])            
-            self.cols.append(''.join(curCol))
+            cols.append(''.join(curCol))
+        return cols 
         
     def __extractSqrs(self):
-        self.sqrs = []
+        sqrs = []
         left, center, right = [], [], []
         for row in range (0,3):
             for col in range(9):
@@ -26,9 +60,9 @@ class Puzzle:
                     center.append(self.rows[row][col])
                 if col >= 6 and col < 9:
                     right.append(self.rows[row][col]) 
-        self.sqrs.append(''.join(left))
-        self.sqrs.append(''.join(center))
-        self.sqrs.append(''.join(right))
+        sqrs.append(''.join(left))
+        sqrs.append(''.join(center))
+        sqrs.append(''.join(right))
         left, center, right = [], [], []
         for row in range(3,6):
             for col in range(9):
@@ -38,9 +72,9 @@ class Puzzle:
                     center.append(self.rows[row][col])
                 if col >= 6 and col < 9:
                     right.append(self.rows[row][col])
-        self.sqrs.append(''.join(left))
-        self.sqrs.append(''.join(center))
-        self.sqrs.append(''.join(right))
+        sqrs.append(''.join(left))
+        sqrs.append(''.join(center))
+        sqrs.append(''.join(right))
         left, center, right = [], [], []
         for row in range(6,9):
             for col in range(9):
@@ -50,13 +84,15 @@ class Puzzle:
                     center.append(self.rows[row][col])
                 if col >= 6 and col < 9:
                     right.append(self.rows[row][col])
-        self.sqrs.append(''.join(left))
-        self.sqrs.append(''.join(center))
-        self.sqrs.append(''.join(right))
+        sqrs.append(''.join(left))
+        sqrs.append(''.join(center))
+        sqrs.append(''.join(right))
+        return sqrs
         
     def prettyPrint(self):
-        print("--------------------------------------------")
-        print(self.name)
+        print("-----------------------------------------------------SOLUTION FOUND")
+        print(self.name,"\nRemaining Empty Spaces: ",self.countEmpty())
+        
         countRow = 0
         for row in self.rows:
             countCol = 0
@@ -74,7 +110,7 @@ class Puzzle:
     def potentialValues(self,row,col):
         potentialValues = ['1','2','3','4','5','6','7','8','9']
         if str(self.rows[row][col]) != "0":
-            print("Val Found!","Row: " + str(row), "Col: " + str(col),"Val: " + str(self.rows[row][col]))
+            #print("Val Found!","Row: " + str(row), "Col: " + str(col),"Val: " + str(self.rows[row][col]))
             return [self.rows[row][col]]
             
         sqrIndex = self.getSqr(row,col)
@@ -91,7 +127,7 @@ class Puzzle:
         for char in str(checkSqr):
             if char in potentialValues:
                 potentialValues.remove(char)     
-        print("row: " + str(row), "Col: " + str(col),checkRow,checkCol,checkSqr,potentialValues)
+        #print("row: " + str(row), "Col: " + str(col),checkRow,checkCol,checkSqr,potentialValues)
                 
         return potentialValues
     
@@ -120,36 +156,64 @@ class Puzzle:
         return sqrIndex
     
     def solvePuzzle(self,times):
-        while times > 0:
+        time = 0
+        emptySpaces = 81
+        while time < times:
             for row in range(9):
                 for col in range(9):
                     potVals = self.potentialValues(row,col)
                     if len(potVals) == 1:
                         self.updateVal(row,col,potVals[0])
-            times -= 1
+                        
+            if self.countEmpty() == 0:
+                print("Puzzle Solved!")
+                self.digits = self.rows[0][:3]
+                break
+            left = self.countEmpty()
+            if left < emptySpaces:
+                emptySpaces = left 
+                print("Empty Spaces: ",left)
+            if time % 50 == 0:
+                print("Solving ...")
+            time += 1
+            if time == times:
+                print("No Solution Found After " + str(times) + " Attempts")
                     
     
     def updateVal(self,row,col,val):
-        #print(self.rows[row][col])
-        #print(list(self.rows[row]),col)
         tempList = list(self.rows[row])
         tempList[col] = val
         self.rows[row] = ''.join(tempList)
+        self.cols = self.__extractCols() 
+        self.sqrs = self.__extractSqrs()
         
-        self.__extractCols() 
-        self.__extractSqrs()
-    
+        
+    def countEmpty(self):
+        emptyCount = 0
+        for row in self.rows:
+            line = str(row)
+            for char in line:
+                if char == '0':
+                    emptyCount += 1
+        return emptyCount
+        
+    def isSolved(self):
+        if self.countEmpty() == 0:
+            return True 
+        else:
+            return False 
+            
     def __str__(self):
         return "Name: " + self.name + "\nRows: " + str(self.rows) + "\nCols: " + str(self.cols) + "\nSqrs: " + str(self.sqrs) + "\n\n"
 
-
-def main():
-    puzzles = readPuzzles("C:\\Users\\jscott\\Desktop\\puzzles.txt")
-    #for puzzle in puzzles:        
-    #    puzzle.prettyPrint()
-    puzzles[0].prettyPrint()
-    puzzles[0].solvePuzzle(100)
-    puzzles[0].prettyPrint()
+def loadSols(filepath):
+    solutions = {}
+    file = open(filepath,"r")
+    data = file.readlines()
+    for solution in data:
+        curSol = solution.split(":")
+        solutions[int(curSol[0])] = curSol[1]
+    return solutions   
 
 def readPuzzles(filepath):    
     file = open(filepath,'r')
@@ -161,11 +225,10 @@ def readPuzzles(filepath):
             name = line
         else:
             curPuzzle.append(line.strip())
-            
         if len(curPuzzle) == 9:
             puzzles.append(Puzzle(name,curPuzzle))
             curPuzzle = []
+    file.close()
     return puzzles 
-      
       
 main()
