@@ -1,6 +1,6 @@
 def main():
     ATTEMPTS = 150
-    SOLUTIONS_FILEPATH = "C:\\Users\\jared\\Desktop\\solutions.txt"
+    SOLUTIONS_FILEPATH = "C:\\Users\\jared\\Desktop\\solutions.dat"
     PUZZLES_FILEPATH = "C:\\Users\\jared\\Desktop\\puzzles.txt"
     
     solutions = loadSols(SOLUTIONS_FILEPATH)
