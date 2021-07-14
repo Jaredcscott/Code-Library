@@ -17,10 +17,9 @@ def main():
         print("\nAttempting: " + puzzle.name)
         puzzle.solvePuzzle(ATTEMPTS)
         if puzzle.isSolved():
+            print("-----------------------------------------------------SOLUTION FOUND")
             solutions[puzNum] = puzzle.digits
-            puzzle.prettyPrint()
-        else:
-            puzzle.solve2()
+        puzzle.prettyPrint()
     
     solved = 0
     for puzzle in solutions:
@@ -93,7 +92,6 @@ class Puzzle:
         return sqrs
         
     def prettyPrint(self):
-        print("-----------------------------------------------------SOLUTION FOUND")
         print(self.name,"\nRemaining Empty Spaces: ",self.countEmpty())
         
         countRow = 0
@@ -167,36 +165,68 @@ class Puzzle:
                     potVals = self.potentialValues(row,col)
                     if len(potVals) == 1:
                         self.updateVal(row,col,potVals[0])
-                        
+            #self.fillSingles()   
             if self.countEmpty() == 0:
                 print("Puzzle Solved!")
                 self.digits = self.rows[0][:3]
-                break
+                return
             left = self.countEmpty()
             if left < emptySpaces:
                 emptySpaces = left 
                 print("Empty Spaces: ",left)
-            if time % 50 == 0:
-                print("Solving ...")
+            #if time % 50 == 0:
+            #    print("Solving ...")
             time += 1
-            if time == times:
-                print("No Solution Found After " + str(times) + " Attempts")
+            #if time == times:
+            #    print("No Solution Found After " + str(times) + " Attempts")
+            
+        self.solveRecursive()
                 
-    def solve2(self):
-        times = 1
-        time = 0
-        emptySpaces = 81
-        while time < times:
-            for row in range(9):
-                for col in range(9):
-                    potVals = self.potentialValues(row,col)
-                    print("Row: " + str(row) + " Col: " + str(col) + str(potVals))
-                    if len(potVals) == 1:
-                        self.updateVal(row,col,potVals[0])
-                        
-            time += 1
-        self.prettyPrint()            
+    def solveRecursive(self):
+        print(self.getEmptyCells())
+            
+    def getEmptyCells(self):
+        cells = []
+        for row in range(9):
+            for col in range(9):
+                curRow = self.rows[row]
+                if curRow[col] == '0':
+                    cellLoc = (row,col)
+                    cells.append(cellLoc)
+        return cells 
+            
+    def tempStorage(self):        
+        self.prettyPrint()
+        lowestNeed = 9
+        lowestInx = 0
+        inx = 0
+        for sqr in self.sqrs:
+            need = 9 - len(self.contains(sqr))
+            if need < lowestNeed:
+                lowestNeed = need 
+                lowestInx = inx
+            inx += 1
+        self.needs(self.sqrs[lowestInx])
+        self.reduceSqr(2)
+        #print(self.potentialValues(0,8))
+        #print("Need: " + str(lowestNeed) + " Sqr: " + str(lowestInx))
+        self.contains(self.sqrs[0])            
+    
+    def contains(self,vals):
+        nums = []
+        for val in vals:
+            if val not in nums and val != '0':
+                nums.append(val)
+        return nums
+    
+    def needs(self,vals):
+        nums = ['1','2','3','4','5','6','7','8','9']
+        for val in vals:
+            if val in nums:
+                nums.remove(val)
+        return nums
         
+    
     
     def updateVal(self,row,col,val):
         tempList = list(self.rows[row])
