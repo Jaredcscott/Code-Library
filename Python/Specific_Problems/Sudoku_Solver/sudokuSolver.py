@@ -1,7 +1,7 @@
 def main():
     ATTEMPTS = 150
-    SOLUTIONS_FILEPATH = "C:\\Users\\jared\\Desktop\\solutions.dat"
-    PUZZLES_FILEPATH = "C:\\Users\\jared\\Desktop\\puzzles.txt"
+    SOLUTIONS_FILEPATH = "C:\\Users\\jscott\\Desktop\\Code-Library\\Python\\Specific_Problems\\Sudoku_Solver\\solutions.dat"
+    PUZZLES_FILEPATH = "C:\\Users\\jscott\\Desktop\\Code-Library\\Python\\Specific_Problems\\Sudoku_Solver\\puzzles.txt"
     
     solutions = loadSols(SOLUTIONS_FILEPATH)
     print(len(solutions)," Solutions Loaded")
@@ -16,6 +16,7 @@ def main():
         if str(solutions[puzNum]).strip(' "\'\t\r\n') == "False": 
             print("\nAttempting: " + puzzle.name)
             puzzle.startRecursion()
+            puzzle.prettyPrint()
             if puzzle.isSolved():
                 
                 solutions[puzNum] = puzzle.digits
@@ -189,7 +190,6 @@ class Puzzle:
         self.solveRecursive(puzzleState)
     
     def solveRecursive(self, puzzleState):
-        #print(self.countEmpty())
         if self.isSolved():
             print("-----------------------------------------------------SOLUTION FOUND")
             puzzle.prettyPrint()
@@ -204,13 +204,17 @@ class Puzzle:
                     for num in nums:
                         temp = self.getCellVal(cell[0],cell[1])
                         self.updateVal(cell[0],cell[1],num)
-                        puzzleState[cell] = num
-                        self.solveRecursive(puzzleState)
-                        self.updateVal(cell[0],cell[1],temp) 
+                        puzzleState[cell] = str(num)
+                        if self.solveRecursive(puzzleState):
+                            return True
+                        else:
+                            return False
+                        self.updateVal(cell[0],cell[1],temp)
+                elif len(nums) == 0:
+                    print(cell)
+                else:
+                    self.updateVal(cell[0],cell[1],nums[0])
             return False         
-            
-            
-                
             
     def getEmptyCells(self):
         cells = []
@@ -255,8 +259,6 @@ class Puzzle:
             if val in nums:
                 nums.remove(val)
         return nums
-        
-    
     
     def updateVal(self,row,col,val):
         tempList = list(self.rows[row])
@@ -264,7 +266,6 @@ class Puzzle:
         self.rows[row] = ''.join(tempList)
         self.cols = self.__extractCols() 
         self.sqrs = self.__extractSqrs()
-        
         
     def countEmpty(self):
         emptyCount = 0
