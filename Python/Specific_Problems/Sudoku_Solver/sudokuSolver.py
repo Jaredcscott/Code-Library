@@ -1,7 +1,7 @@
 def main():
     ATTEMPTS = 150
-    SOLUTIONS_FILEPATH = "C:\\Users\\jscott\\Desktop\\Code-Library\\Python\\Specific_Problems\\Sudoku_Solver\\solutions.dat"
-    PUZZLES_FILEPATH = "C:\\Users\\jscott\\Desktop\\Code-Library\\Python\\Specific_Problems\\Sudoku_Solver\\puzzles.txt"
+    SOLUTIONS_FILEPATH = "C:\\Users\\jared\\Desktop\\solutions.dat"
+    PUZZLES_FILEPATH = "C:\\Users\\jared\\Desktop\\puzzles.txt"
     
     solutions = loadSols(SOLUTIONS_FILEPATH)
     print(len(solutions)," Solutions Loaded")
@@ -9,17 +9,17 @@ def main():
         for i in range(1,51):
             solutions[i] = False
     puzzles = readPuzzles(PUZZLES_FILEPATH)
-    #for puzzle in puzzles:
-    puzzle = puzzles[1]
-    puzStr = puzzle.name.split(" ")[1].strip(' "\'\t\r\n')
-    puzNum = int(puzStr)
-    if str(solutions[puzNum]).strip(' "\'\t\r\n') == "False": 
-        print("\nAttempting: " + puzzle.name)
-        puzzle.solvePuzzle(ATTEMPTS)
-        if puzzle.isSolved():
-            print("-----------------------------------------------------SOLUTION FOUND")
-            solutions[puzNum] = puzzle.digits
-        puzzle.prettyPrint()
+    for puzzle in puzzles:
+        #puzzle = puzzles[1]
+        puzStr = puzzle.name.split(" ")[1].strip(' "\'\t\r\n')
+        puzNum = int(puzStr)
+        if str(solutions[puzNum]).strip(' "\'\t\r\n') == "False": 
+            print("\nAttempting: " + puzzle.name)
+            puzzle.startRecursion()
+            if puzzle.isSolved():
+                
+                solutions[puzNum] = puzzle.digits
+        
     
     solved = 0
     for puzzle in solutions:
@@ -174,16 +174,43 @@ class Puzzle:
             if left < emptySpaces:
                 emptySpaces = left 
                 print("Empty Spaces: ",left)
+            time += 1
             #if time % 50 == 0:
             #    print("Solving ...")
-            time += 1
-            #if time == times:
-            #    print("No Solution Found After " + str(times) + " Attempts")
             
-        self.solveRecursive()
+            #if time == times:
+            #    print("No Solution Found After " + str(times) + " Attempts")   
+    
+    def startRecursion(self):
+        puzzleState = {}
+        for row in range(9):
+            for col in range(9):
+                puzzleState[(row,col)] = [self.rows[row][col]]
+        self.solveRecursive(puzzleState)
+    
+    def solveRecursive(self, puzzleState):
+        #print(self.countEmpty())
+        if self.isSolved():
+            print("-----------------------------------------------------SOLUTION FOUND")
+            puzzle.prettyPrint()
+            return True
+        else:    
+            queue = self.getEmptyCells()
+            for cell in queue:
+                puzzleState[cell] = self.potentialValues(cell[0],cell[1])
+            for cell in puzzleState:
+                nums = puzzleState[cell]
+                if len(nums) > 1:
+                    for num in nums:
+                        temp = self.getCellVal(cell[0],cell[1])
+                        self.updateVal(cell[0],cell[1],num)
+                        puzzleState[cell] = num
+                        self.solveRecursive(puzzleState)
+                        self.updateVal(cell[0],cell[1],temp) 
+            return False         
+            
+            
                 
-    def solveRecursive(self):
-        print(self.getEmptyCells())
             
     def getEmptyCells(self):
         cells = []
@@ -193,7 +220,10 @@ class Puzzle:
                 if curRow[col] == '0':
                     cellLoc = (row,col)
                     cells.append(cellLoc)
-        return cells 
+        return cells
+
+    def getCellVal(self,row,col):
+        return self.rows[row][col]
             
     def tempStorage(self):        
         self.prettyPrint()
