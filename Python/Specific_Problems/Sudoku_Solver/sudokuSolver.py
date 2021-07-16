@@ -1,8 +1,10 @@
+import time
 def main():
     #----------------------CONSTANTS------------------------------------
     ATTEMPTS = 150
     SOLUTIONS_FILEPATH = "C:\\Users\\jared\\Desktop\\solutions.dat"
     PUZZLES_FILEPATH = "C:\\Users\\jared\\Desktop\\puzzles.txt"
+    start_time = time.time()
     #----------------------Loading previous solutions--------------------
     solutions = loadSols(SOLUTIONS_FILEPATH)
     print(len(solutions)," Solutions Loaded")
@@ -25,6 +27,12 @@ def main():
         if str(result).strip() != "False":
             solved += 1 
     print("\n" + str(solved) + "/50 Puzzles Solved!")
+    seconds = time.time() - start_time
+    minutes = 0 
+    while seconds > 60:
+        minutes += 1
+        seconds -= 60
+    print("Runtime: " + str(minutes) + ":" + (str(int(seconds)) if seconds>9 else "0"+ str(int(seconds))))
     #----------------------Storing solutions-----------------------------
     file = open(SOLUTIONS_FILEPATH,"wt")
     sum = 0
@@ -32,7 +40,8 @@ def main():
         sum += int(solutions[solution])
         file.write(str(solution) + ":" + str(solutions[solution]).strip(' "\'\t\r\n') + "\n")
     print("Sum: " + str(sum))
-    file.close() 
+    file.close()
+
     
 class Puzzle:
     def __init__(self,name,rows):
