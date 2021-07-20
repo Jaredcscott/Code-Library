@@ -1,9 +1,8 @@
 import time
 def main():
     #----------------------CONSTANTS------------------------------------
-    ATTEMPTS = 150
-    SOLUTIONS_FILEPATH = "C:\\Users\\jared\\Desktop\\solutions.dat"
-    PUZZLES_FILEPATH = "C:\\Users\\jared\\Desktop\\puzzles.txt"
+    SOLUTIONS_FILEPATH = "C:\\Users\\jscott\\Desktop\\Code-Library\\Python\\Specific_Problems\\Sudoku_Solver\\solutions.dat"
+    PUZZLES_FILEPATH = "C:\\Users\\jscott\\Desktop\\Code-Library\\Python\\Specific_Problems\\Sudoku_Solver\\puzzles.txt"
     start_time = time.time()
     #----------------------Loading previous solutions--------------------
     solutions = loadSols(SOLUTIONS_FILEPATH)
@@ -57,7 +56,7 @@ class Puzzle:
         #Ignore if value already present
         if str(self.rows[row][col]) != "0":
             return [self.rows[row][col]]
-        #Determining which 'square' the value exsists within
+        #Determining which 'square' the value exists within
         sqrIndex = self.getSqr(row,col)
         #Populating values from associated groups 
         checkRow = self.rows[row] 
@@ -115,12 +114,12 @@ class Puzzle:
                 #Trying value
                 self.updateVal(curRow,curCol,val)
                 if not self.solveRecursive():
-                    #Reseting value if solution not found 
+                    #Resetting value if solution not found 
                     self.updateVal(curRow,curCol,'0') 
             return False   
     
     def getSqr(self,row,col):
-        #Using range flags to determing which square the given location resides within
+        #Using range flags to determining which square the given location resides within
         if row >= 0 and row < 3:
             if col >= 0 and col < 3: 
                 sqrIndex = 0
@@ -233,7 +232,6 @@ class Puzzle:
         
     def prettyPrint(self):
         print(self.name,"\nRemaining Empty Spaces: ",self.countEmpty())
-        
         countRow = 0
         for row in self.rows:
             countCol = 0
