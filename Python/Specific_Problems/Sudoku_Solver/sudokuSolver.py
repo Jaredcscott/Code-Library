@@ -144,6 +144,7 @@ class Puzzle:
         return sqrIndex
     
     def solvePuzzle(self,times):
+        #Attempt at solving the puzzle through pure logic
         time = 0
         emptySpaces = 81
         while time < times:
