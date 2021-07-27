@@ -1,3 +1,6 @@
+'''
+    @author Jared Scott 
+'''
 import time
 def main():
     #----------------------CONSTANTS------------------------------------
