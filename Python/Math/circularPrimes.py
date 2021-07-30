@@ -1,9 +1,15 @@
+'''
+    @author Jared Scott
+    Prob 35 of Project Euler Solved 7/28/21 
+'''
+
 import math 
 import time
 
 limit = 1000000
 
 def shiftChar(num):
+    #This function will shift the first character of a number to the end returning a string representation of the number 
     numStr = str(num) 
     first = numStr[0]
     newStr = numStr[1:]+first
@@ -13,6 +19,7 @@ def isPrime(num):
     '''
         This function will return a true or false representing whether or not the given number ('num') is prime
     '''
+    #Making all numbers positive for evaluation 
     if num < 0:
         num = -1 * num
     if all(num%i!=0 for i in range(2,int(math.sqrt(num)) + 1)) and num > 1:
@@ -24,9 +31,7 @@ def isCircularPrime(num):
     if isPrime(num):
         numLen = len(str(num))
         for permutation in range(numLen+1):
-            #print("Before: " ,num)
             num = shiftChar(num)
-            #print("After: " ,num)
             if not isPrime(int(num)):
                 return False           
         return True 

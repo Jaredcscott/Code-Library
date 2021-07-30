@@ -1,6 +1,7 @@
 '''
     @author Jared Scott
     Prob 50 of Project Euler Solved 7/28/21
+    INCOMPLETE
 '''
 import math 
 import time
