@@ -1,36 +1,32 @@
-import socket  # Import socket module
+'''
+ NOTE: Chrome system variables, make a TLS log
+'''
+
+import socket
 import random
 
-port = 10150  # Reserve a port for your service every new transfer wants a new port or you must wait.
-s = socket.socket()  # Create a socket object
-host = ""  # Get local machine name
-s.bind(('localhost', port))  # Bind to the port
-s.listen(5)  # Now wait for client connection.
-
-'''
- Chrome system variables, make a TLS log 
-'''
+port = 10150  #Port where the sensor data will be 'Served'
+sckt = socket.socket()
+sckt.bind(('localhost', port))  # Creates the port binding for 127.0.0.1:10150
+sckt.listen()  #Socket object will now listen for activity on the specified port
 print('Server listening....')
 
-SENSOR_CONFIG = "Belfort 6200"
 
+def genBelfortData():
+    randomValue = random.uniform(12,14)
+    dataString = "\x01\x02\x0DVP" + str(randomValue)[:5] + "DE4" + "\r\n"
+    return dataString
 
-def getBelfortData():
-    randomValue = random.randint(10, 14)
-    randomMantissa = random.randint(25, 68)
-    st = "\x01\x02\x0DVP" + str(float(str(randomValue) + "." + str(randomMantissa))) + "DE4" + "\r\n"
-    return st
-
-def simulateSensor(sensor):
-    conn, address = s.accept()  # Establish connection with client.
+def simulateSensor():
+    conn, address = sckt.accept()  # Establish connection with client.
     print('Incoming connection from address: ', str(address[0]) + ":" + str(address[1]))
     while True:
+        #Simulator waits for a 'poll' then sends a data string
         data = conn.recv(1024)
-        print('Incoming Message:', data.decode())
-        st = getBelfortData()
-        byt = st.encode()
+        print('Incoming Poll Message:', data.decode())
+        dataString = genBelfortData() #Generating simulated data
+        byt = dataString.encode()
         conn.send(byt)
     conn.close()
 
-
-simulateSensor(SENSOR_CONFIG)
+simulateSensor()

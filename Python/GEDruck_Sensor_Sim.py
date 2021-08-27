@@ -1,37 +1,30 @@
-import socket  # Import socket module
+import socket
 import random
+import time
 
-port = 10101  # Reserve a port for your service every new transfer wants a new port or you must wait.
-s = socket.socket()  # Create a socket object
-host = ""  # Get local machine name
-s.bind(('localhost', port))  # Bind to the port
-s.listen(5)  # Now wait for client connection.
-
+port = 10102  #Port where the sensor data will be 'Served'
+sckt = socket.socket()
+sckt.bind(('localhost', port))  # Creates the port binding for 127.0.0.1:10150
+sckt.listen()  #Socket object will now listen for activity on the specified port
 print('Server listening....')
 
 
-def getGEDruckData():
-    randomValue = random.randint(850, 1050)
-    st = "1: " + str(randomValue) + "\r"
-    return st
-
+def genGEDruckData():
+    randomValue = random.randint(850,1050)
+    dataString = "1: " + str(randomValue) + "\r"
+    return dataString
 
 def simulateSensor():
-    conn, address = s.accept()  # Establish connection with client.
+    conn, address = sckt.accept()  # Establish connection with client.
     print('Incoming connection from address: ', str(address[0]) + ":" + str(address[1]))
     while True:
-        data = conn.recv(1024)
-        print('Server received', data)
-        try:
-            st = getGEDruckData()
-            byt = st.encode()
-            conn.send(byt)
-            break
+        #Simulator waits for a 'poll' then sends a data string
+        #data = conn.recv(1024)
+        #print('Incoming Poll Message:', data.decode())
+        dataString = genGEDruckData() #Generating simulated data
+        byt = dataString.encode()
+        conn.send(byt)
+        time.sleep(10)
+    conn.close()
 
-        except Exception as e:
-            print(e)
-            break
-
-while True:
-    simulateSensor()
-conn.close()
+simulateSensor()
