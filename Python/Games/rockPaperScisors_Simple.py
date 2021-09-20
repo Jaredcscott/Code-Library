@@ -4,8 +4,8 @@
 '''
 
 import random
-computersChoice = random.randint(0,2)
-playersChoice = eval(input("Please enter the number corresponding with your\
+computersChoice = random.getrandbits(2)
+playersChoice = int(input("Please enter the number corresponding with your\
  choice.\nscissor (0), rock (1), paper (2): "))
 
 if computersChoice == 0:
@@ -31,3 +31,6 @@ if computersChoice == 2:
         print("The computer is paper. You are paper. It is a draw")
     else:
         print("The computer is paper. You are rock. You lose.")
+        
+if computersChoice == 3:
+    print("LAME") 
