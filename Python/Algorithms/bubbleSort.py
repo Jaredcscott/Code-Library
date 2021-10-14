@@ -15,6 +15,7 @@ def bubbleSort(inputList):
                 print("Swapping...",inputList)
                 didSwap = True
     print("Sorting finished\nThe Input List has been altered")
+    
 def main():
     list = [3,1,7,4,0,9,6]
     print("BEFORE:",list)
