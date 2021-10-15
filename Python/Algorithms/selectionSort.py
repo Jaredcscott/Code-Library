@@ -1,6 +1,7 @@
 '''
     @Author Jared Scott 
     This function will sort the given list of integers
+    The input list will be modified
 '''
 
 def main():
@@ -13,7 +14,7 @@ def main():
         print("After: " + str(list))   
 
 def selectionSort(list):
-    #This function sorts the list. 
+    #This function sorts the list of numeric values. 
     #NOTE: The original list has been modified
     for i in range(len(list)):
         minIndex = i
@@ -21,5 +22,6 @@ def selectionSort(list):
             if list[j] < list[minIndex]:
                 minIndex = j
         list[i], list[minIndex] = list[minIndex],list[i]
-    
-main()
+
+if __name__ == "__main__":    
+    main()
