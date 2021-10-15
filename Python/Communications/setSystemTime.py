@@ -32,7 +32,7 @@ def main(OFFSETS):
                       MILLISECOND,  # Millisecond
                   )
     # win32api.SetSystemTime(year, month , dayOfWeek , day , hour , minute , second , milliseconds)
-    win32api.SetSystemTime( time_tuple[0],time_tuple[1],time_tuple[2],time_tuple[3],time_tuple[4],time_tuple[5],time_tuple[6],time_tuple[7])
+    win32api.SetSystemTime(*time_tuple)
 
 #---USA TIME ZONE OFFSETS---    
 OFFSETS = {
@@ -61,3 +61,4 @@ LEAP_YEARS = [2000,2004,2008,2012,2016,2020,2024,2028,2032,2036,2040,2044,2048,2
 
 if __name__ == "__main__": 
     main(OFFSETS)
+    
