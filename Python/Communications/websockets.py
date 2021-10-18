@@ -1,13 +1,20 @@
+'''
+    @Author Jared Scott 
+    This is an example of websocket communication using python. 
+'''
+
 import asyncio
 import websockets
 import json
 
-uri = "ws://<URI PATH>/"
+#Change this path variable to the websocket endpoint desired. 
+uri = "ws://<URI PATH>/"   
 timeout = 5
 
-async def connectToSocket():
-    #Connect to the server
+async def connectToSocket(uri):
+    #Connecting to the socket
     async with websockets.connect(uri) as websocket:
+        #Enter the desired request data into this dictionary 
         request = {
             'key':'val'
             }
@@ -20,4 +27,4 @@ async def connectToSocket():
     await websocket.close()
 
 if __name__ == "__main__":
-	asyncio.get_event_loop().run_until_complete(connectToSocket())
+	asyncio.get_event_loop().run_until_complete(connectToSocket(uri))
