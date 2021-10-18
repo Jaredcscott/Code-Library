@@ -1,6 +1,7 @@
 '''
     @Author Jared Scott 
-    This function implements thje bubble sort algorithm. 
+    This function implements the bubble sort algorithm to sort a list of NUMERIC values 
+    This function will augment the list which is given as input
 '''
 def bubbleSort(inputList):
     didSwap = True
@@ -8,9 +9,18 @@ def bubbleSort(inputList):
     while didSwap:
         didSwap = False
         for i in range(len(inputList) - 1):
-            if inputList[i].getCardValue() > inputList[i + 1].getCardValue():
+            if inputList[i] > inputList[i + 1]:
                 inputList[i], inputList[i + 1] = inputList[i + 1], inputList[i]
-                cardList = generateCardList(inputList)
                 count += 1
-                print("%i: "%count, cardList)
+                print("Swapping...",inputList)
                 didSwap = True
+    print("Sorting finished\nThe Input List has been altered")
+    
+def main():
+    list = [3,1,7,4,0,9,6]
+    print("BEFORE:",list)
+    bubbleSort(list) 
+    print("AFTER:",list)
+
+if __name__ == "__main__":
+    main()
