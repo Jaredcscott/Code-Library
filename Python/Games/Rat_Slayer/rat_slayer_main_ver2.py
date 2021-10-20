@@ -1,5 +1,7 @@
 '''
-RUN ME TO PLAY
+    RUN ME TO PLAY
+    @Author Jared Scott
+    This is the main file for Rat Slayer, adjust the parameters below to alter starting conditions.
 '''
 from rat_slayer_funcs_ver2 import *
 
@@ -23,7 +25,7 @@ while play_game_again.upper() == "Y":
     print("                 -Jared Scott             ")
     print("\n\n          Make it to level 30 to win \nMaximize the python shell window for best results\n\n\n")
 
-
+    #---------Adjust these values to alter starting conditions---------
     ratBodies = 0
     playerLife = 10
     experience = 0
