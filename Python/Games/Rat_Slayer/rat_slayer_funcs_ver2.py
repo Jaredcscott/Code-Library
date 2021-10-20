@@ -1,6 +1,15 @@
+'''
+    POORLY WRITTEN CODE WARNING
+    
+    @Author Jared Scott 
+    
+    This file contains the function definitions used within the Rat Slayer main program. 
+    
+    This code is not well written... 
+'''
+
 import random
 import time
-
 
 def rat_fight(playerLife,ratBodies,level,experience,damage,gold,exit):
     in_woods = 1
