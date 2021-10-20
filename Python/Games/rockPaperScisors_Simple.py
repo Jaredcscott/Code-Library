@@ -1,5 +1,5 @@
 '''
-    Jared Scott
+    @Author Jared Scott
     This script plays a single instance of rock paper scissors
 '''
 
