@@ -1,5 +1,5 @@
 '''
-    Jared Scott
+    @author:Jared Scott
 
     Asks the user for inputs regarding an employees pay information.
     The program will perform some calculations on those inputs and output the
