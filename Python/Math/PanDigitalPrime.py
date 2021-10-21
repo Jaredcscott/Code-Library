@@ -1,6 +1,7 @@
+'''
+    @Author Jared Scott
+'''
 import math 
-
-#@author Jared Scott
 
 def getPrimes(n):
     #Implements the sieve of eratosthenes 
