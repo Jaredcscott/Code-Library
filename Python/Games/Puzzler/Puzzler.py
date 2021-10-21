@@ -1,3 +1,9 @@
+'''
+    @Author Jared Scott 
+    This is a text based command line trivia game. 
+    Choose a difficulty and answer the questions
+'''
+
 easy = ["What is the ingredient that causes bread to rise?","__1__",
         "\nWhat is the highest mountain in the world? Mount","__2__",
         "\nWhat planet bears the name of the Roman god of war?","__3__",
@@ -55,6 +61,7 @@ def dif_selection(players_choice):
         print(" \n     Selection not recognized, easy difficulty selected by default\n\n\n")
         questions,answers = easy,easy_answers
         return (questions,answers)
+
 questions,answers = dif_selection(players_choice)
 spaces_5 = """
 ./\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\.
