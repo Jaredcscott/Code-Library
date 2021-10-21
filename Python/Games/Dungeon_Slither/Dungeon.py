@@ -1,3 +1,8 @@
+'''
+    @Author Jared Scott 
+    This file holds the needed definitions for a Dungeon 
+'''
+
 from Actor import Actor, Player 
 from Room import Room
 
