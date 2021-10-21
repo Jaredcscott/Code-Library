@@ -1,3 +1,8 @@
+'''
+    @Author Jared Scott 
+    This file holds the needed definitions for an Item 
+'''
+
 class Item:
     def __init__(self,name,type,value):
         self.name = name 
