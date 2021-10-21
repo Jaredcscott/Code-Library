@@ -1,3 +1,8 @@
+'''
+    @Author Jared Scott 
+    This file holds the needed definitions for an actor
+'''
+
 class Actor:
     def __init__(self,id,type=None):
         self.id = id
