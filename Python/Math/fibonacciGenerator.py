@@ -1,5 +1,7 @@
-#@author Jared Scott
-
+'''
+    @Author Jared Scott
+    Returns a list of fibonacci numbers with the given size
+'''
 def fibonacci(values):
     '''
         This function will return a list containing 'values' number of fibonacci numbers. 
@@ -16,5 +18,6 @@ def fibonacci(values):
     while len(fibNums) < values:
         fibNums.append(fibNums[-2] + fibNums[-1])
     return fibNums
-    
-print(fibonacci(20))
+
+if __name == '__main__':
+    print(fibonacci(20))
