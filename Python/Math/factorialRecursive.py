@@ -1,4 +1,5 @@
 '''
+    @Author Jared Scott
     This is a recursive factorial function
 '''
 
