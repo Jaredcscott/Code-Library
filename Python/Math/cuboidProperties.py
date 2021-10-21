@@ -1,5 +1,5 @@
 '''
-    Jared Scott
+    @Author Jared Scott
     This script can be used to calculate the properties of a cuboid
 '''
 
