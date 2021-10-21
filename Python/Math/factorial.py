@@ -1,4 +1,7 @@
-
+'''
+    @Author Jared Scott 
+    This function will calculate the factorial of the given number
+'''
 def factorial(n):
     #This function implements the factorial operation namely:
 	# example: 7! = 7 * 6 * 5 * 4 * 3 * 2 * 1 
