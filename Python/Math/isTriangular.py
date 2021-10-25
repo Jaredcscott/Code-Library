@@ -1,4 +1,7 @@
-#@author Jared Scott
+'''
+    @Author Jared Scott
+    This function will determine weather the given number is a Triangular number, see comments below for furter details on this destinction 
+'''
 
 def isTriangular(num): 
 	'''
