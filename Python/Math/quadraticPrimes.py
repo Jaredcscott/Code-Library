@@ -1,6 +1,6 @@
 '''
-    @author Jared Scott
-    Prob 27 of Project Euler Solved 7/28/21
+    @Author Jared Scott
+    Code written to solve Prob 27 of Project Euler. Solved 7/28/21
     Run Time: 0:05 
 '''
 import math 
@@ -16,7 +16,6 @@ def isPrime(num):
         return True
     else:
         return False
-        
         
 def solve(limit,a,b):
     #Implements n^2 + an + b
@@ -46,13 +45,16 @@ def find(n):
                 print("New Most Found!\nmost: " + str(most) + " n: " + str(n) + " a: " + str(a) + " b: " + str(b))
     print(mostN,most,ab)
     
-start_time = time.time()
-find(100)
-seconds = time.time() - start_time
-minutes = 0 
-while seconds > 60:
-    minutes += 1
-    seconds -= 60
-print("Runtime: " + str(minutes) + ":" + (str(int(seconds)) if seconds>9 else "0"+ str(int(seconds))))   
-    
+def main():
+    start_time = time.time()
+    find(100)
+    seconds = time.time() - start_time
+    minutes = 0 
+    while seconds > 60:
+        minutes += 1
+        seconds -= 60
+    print("Runtime: " + str(minutes) + ":" + (str(int(seconds)) if seconds>9 else "0"+ str(int(seconds))))   
+
+if __name__ == '__main__':
+    main()
  
