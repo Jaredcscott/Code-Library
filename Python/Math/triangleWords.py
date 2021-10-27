@@ -1,5 +1,10 @@
+'''
+    @Author Jared Scott 
+    This script was used to solve a project euler question. Converts letters into integers then calculates if a word's numerical sum is a triangle number or not
+'''
+#File path to the words file 
 FILEPATH = "C:\\Users\\jared\\Desktop\\Code-Library\\Python\\Math\\words.txt"
-
+#Dictionary containing the letter -> Integer conversions 
 LETTERS = {
     '"':0,
     '':0,
@@ -30,7 +35,9 @@ LETTERS = {
     'Y':25,
     'Z':26
 }
+
 def readData(filepath):    
+    #Reads the words from the file creating a list for futher processing 
     print("Reading data. . .")
     file = open(filepath,'r')
     words = []
@@ -40,6 +47,7 @@ def readData(filepath):
     return words 
    
 def genTriNumbers(limit):
+    #Generates a list of triangle numbers with `limit` values 
     triangleNums = []
     num = 1
     while num < limit:
@@ -50,20 +58,24 @@ def genTriNumbers(limit):
     return triangleNums
 
 def convertWord(word):
+    #Converts the word into it's numerical value based on the dictionary of letter vlaues 
     wordSum = 0
     for letter in word:
         wordSum += LETTERS[letter]
     return wordSum
-        
-words = readData(FILEPATH)
-triNums = genTriNumbers(2500000)
-print("Printing first 10 Triangle numbers",triNums[:10])
-print("Validating letters dictionary \nS=19\nK=11 \nY=25\n =55\nRESULTS:",LETTERS['S'] + LETTERS['K'] + LETTERS['Y'],"\nPASSED")
-count = 0
-for word in words:
-    wordNum = convertWord(word)
-    if wordNum in triNums:
-        print("Triangle Word Found!" + word + "Number Form: " + str(wordNum))
-        count += 1
-print("Count of Triangle Words: " + str(count))
 
+def main():
+    words = readData(FILEPATH)
+    triNums = genTriNumbers(2500000)
+    print("Printing first 10 Triangle numbers",triNums[:10])
+    print("Validating letters dictionary \nS=19\nK=11 \nY=25\n =55\nRESULTS:",LETTERS['S'] + LETTERS['K'] + LETTERS['Y'],"\nPASSED")
+    count = 0
+    for word in words:
+        wordNum = convertWord(word)
+        if wordNum in triNums:
+            print("Triangle Word Found!" + word + "Number Form: " + str(wordNum))
+            count += 1
+    print("Count of Triangle Words: " + str(count))
+
+if __name__ == '__main__':
+    main()
