@@ -1,5 +1,3 @@
-import matplotlib.pyplot as plt
-import math
 '''
     @Author Jared Scott 
     This generator will generate tree like fractal structures. 
@@ -8,6 +6,8 @@ import math
     To use:
         Adjust the values below (MINIMUM_BRANCH_LENGTH, branchLen, armLen, angle) then run the script within any python terminal 
 '''
+import matplotlib.pyplot as plt
+import math
 
 xs = []                          # Stores the x values for a graphic representation
 ys = []                          # Stores the y values for a graphic representation
@@ -136,5 +136,9 @@ class UndrawnTurtle():
     def getPoints(self):
         #Used to retrieve the visited points 
         return self.pointsVisited
-      
-gen_tree(branchLen,armLen,angle)
+    
+def main():
+    gen_tree(branchLen,armLen,angle)
+    
+if __name == '__main__':
+    main()
