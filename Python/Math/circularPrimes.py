@@ -1,5 +1,5 @@
 '''
-    @author Jared Scott
+    @Author Jared Scott
     Prob 35 of Project Euler Solved 7/28/21 
 '''
 
@@ -37,15 +37,19 @@ def isCircularPrime(num):
         return True 
     return False 
 
-start_time = time.time()    
-circularPrimes = []
-for num in range(limit):
-    if isCircularPrime(num):
-        circularPrimes.append(num)
-seconds = time.time() - start_time
-minutes = 0 
-while seconds > 60:
-    minutes += 1
-    seconds -= 60
-print("Runtime: " + str(minutes) + ":" + (str(int(seconds)) if seconds>9 else "0"+ str(int(seconds))))   
-print("Solution Found! ",len(circularPrimes)," : ",circularPrimes) 
+def main():
+    start_time = time.time()    
+    circularPrimes = []
+    for num in range(limit):
+        if isCircularPrime(num):
+            circularPrimes.append(num)
+    seconds = time.time() - start_time
+    minutes = 0 
+    while seconds > 60:
+        minutes += 1
+        seconds -= 60
+    print("Runtime: " + str(minutes) + ":" + (str(int(seconds)) if seconds>9 else "0"+ str(int(seconds))))   
+    print("Solution Found! ",len(circularPrimes)," : ",circularPrimes) 
+    
+if __name__ == '__main__':
+    main()
