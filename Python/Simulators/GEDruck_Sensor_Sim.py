@@ -13,7 +13,7 @@ def main():
     sckt = socket.socket()
     sckt.bind(('localhost', port))  # Creates the port binding for 127.0.0.1:10150
     sckt.listen()  #Socket object will now listen for activity on the specified port
-    print('Server listening....')
+    print('Serving GEDRuck Data on at 127.0.0.1:10102\nListening....')
     simulateSensor(sckt)
 
 def genGEDruckData():
