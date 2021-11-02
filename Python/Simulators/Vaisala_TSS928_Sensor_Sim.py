@@ -8,25 +8,35 @@ import socket
 import random
 
 def main():
-    port = 10170  #Port where the sensor data will be 'Served'
-    sckt = socket.socket()
-    sckt.bind(('localhost', port))  # Creates the port binding for 127.0.0.1:10170
-    sckt.listen()  #Socket object will now listen for activity on the specified port
-    sckt.settimeout(30) 
-    print('Serving Vaisala TSS928 Data at 127.0.0.1:' + str(port) + '\nListening....')
-    dict = fillDicts()
-    dataString = genVSS928Data(dict)  # Generating initial simulated data
-    while True:
-        conn = None
-        try:
+   port = 10170  #Port where the sensor data will be 'Served'
+   sckt = socket.socket()
+   sckt.bind(('localhost', port))  # Creates the port binding for 127.0.0.1:10170
+   sckt.listen()  #Socket object will now listen for activity on the specified port
+   sckt.settimeout(3) 
+   print('Serving Vaisala TSS928 Data at 127.0.0.1:' + str(port) + '\nListening....')
+   dict = fillDicts()
+   dataString = genVSS928Data(dict)  # Generating initial simulated data
+   while True:
+      conn = None
+      try:
+         #Outer try is watching for a keyboard interrupt coming from the inner try when it throws a timeout exception 
+         try:
+            '''
+               KeyboardInterrupt does not reach main call stack until process is complete. 
+               The timeout will complete the process and exit with a timeout exception.
+               If the user has entered a keyboard interrupt, the timeout will allow that exception to be caught
+            '''
             conn, address = sckt.accept()  # Establish connection with client.
             print('Incoming connection from address: ', str(address[0]) + ":" + str(address[1]))
             simulateSensor(conn,address)
-        except KeyboardInterrupt:
-            print('Shutting down sensor sim. . .')
-            if conn:
-                conn.close()
-            break
+         except socket.timeout:
+            print("Listening....")
+            continue
+      except KeyboardInterrupt:
+         print('Shutting down sensor sim. . .')
+         if conn:
+            conn.close()
+         break
         
 def fillDicts():
     data = {"nearN":0,"nearNE":0,"nearE":0,"nearSE":0,"nearS":0,"nearSW":0,"nearW":0,"nearNW":0,
