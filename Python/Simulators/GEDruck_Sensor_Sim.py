@@ -13,13 +13,24 @@ def main():
    sckt = socket.socket()
    sckt.bind(('localhost', port))  # Creates the port binding for 127.0.0.1:10102
    sckt.listen()  #Socket object will now listen for activity on the specified port
+   sckt.settimeout(3)
    print('Serving GEDRuck Data on at 127.0.0.1:' + str(port) + '\nListening....')
    while True:
       conn = None
       try:
-         conn, address = sckt.accept()  # Establish connection with client
-         print('Incoming connection from address: ', str(address[0]) + ":" + str(address[1]))
-         simulateSensor(conn,address)
+         #Outer try is watching for a keyboard interrupt coming from the inner try when it throws a timeout exception 
+         try:
+            '''
+               KeyboardInterrupt does not reach main call stack until process is complete. 
+               The timeout will complete the process and exit with a timeout exception.
+               If the user has entered a keyboard interrupt, the timeout will allow that exception to be caught
+            '''
+            conn, address = sckt.accept()  # Establish connection with client
+            print('Incoming connection from address: ', str(address[0]) + ":" + str(address[1]))
+            simulateSensor(conn,address)
+         except socket.timeout:
+            print("Listening....")
+            continue
       except KeyboardInterrupt:
          print("Shutting down sensor sim. . .")
          if conn:
