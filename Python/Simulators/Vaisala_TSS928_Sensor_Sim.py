@@ -2,7 +2,6 @@
    @Author Jared Scott
    This script will open a socket connection at the specified port number hosted from localhost (127.0.0.1)
    This socket when conntacted will generate a random data value and return this data over the socket.
-   A connection must be made within 30 seconds or the socket will close on a timeout. 
 '''
 import socket
 import random
