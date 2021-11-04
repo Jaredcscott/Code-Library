@@ -1,5 +1,5 @@
 '''
-    @Author Jared Scott 
+    @Author Jared Scott ☯
     This function will calculate the factorial of the given number
 '''
 def factorial(n):

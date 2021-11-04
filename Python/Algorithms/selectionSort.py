@@ -1,5 +1,5 @@
 '''
-    @Author Jared Scott 
+    @Author Jared Scott ☯
     This function will sort the given list of integers
     The input list will be modified
 '''

@@ -1,5 +1,5 @@
 '''
-    @Author Jared Scott
+    @Author Jared Scott ☯
     This function will return a list of factors for the given number 
 '''
 def factors(n):

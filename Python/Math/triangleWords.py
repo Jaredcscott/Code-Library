@@ -1,5 +1,5 @@
 '''
-    @Author Jared Scott 
+    @Author Jared Scott ☯
     This script was used to solve a project euler question. Converts letters into integers then calculates if a word's numerical sum is a triangle number or not
 '''
 #File path to the words file 

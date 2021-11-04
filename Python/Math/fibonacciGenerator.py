@@ -1,5 +1,5 @@
 '''
-    @Author Jared Scott
+    @Author Jared Scott ☯
     Returns a list of fibonacci numbers with the given size
 '''
 def fibonacci(values):

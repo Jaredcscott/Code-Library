@@ -1,5 +1,5 @@
 '''
-    @Author Jared Scott 
+    @Author Jared Scott ☯
     This function will use the windows API to set the system clock (SETS UTC TIME VALUE). 
     Adjust the values in the main function to obtain the desired system time. 
     NOTES ON TIME VALUES: 

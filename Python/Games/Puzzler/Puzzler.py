@@ -1,5 +1,5 @@
 '''
-    @Author Jared Scott 
+    @Author Jared Scott ☯
     This is a text based command line trivia game. 
     Choose a difficulty and answer the questions
 '''

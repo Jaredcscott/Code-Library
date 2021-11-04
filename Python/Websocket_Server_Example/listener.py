@@ -1,5 +1,5 @@
 '''
-    @Author Jared Scott
+    @Author Jared Scott ☯
     This file defines a class which will listen on a specific local port using the Websocket protocol
     When a communication is initiated using the websocket, the function 'parseCommand' will be run
 '''

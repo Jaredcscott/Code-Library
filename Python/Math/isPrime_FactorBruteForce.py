@@ -1,5 +1,5 @@
 '''
-    @Author Jared Scott
+    @Author Jared Scott ☯
     This function uses a brute force factoring process to determine if a given number is prime. 
 '''
 def isPrime(num):

@@ -1,5 +1,5 @@
 '''
-    @Author Jared Scott 
+    @Author Jared Scott ☯
     This script generates then compared pentagonal numbers 
 '''
 

@@ -1,5 +1,5 @@
 '''
-    @Author Jared Scott 
+    @Author Jared Scott ☯
     This function will return the index of the key if the given key exists within the list.
     If the key does not exist this function will return a string "Key Not Found"
 '''

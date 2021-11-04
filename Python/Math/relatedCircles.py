@@ -1,5 +1,5 @@
 '''
-    @Author Jared Scott
+    @Author Jared Scott ☯
     This script will determine the relationship between two circles. 
 '''
 

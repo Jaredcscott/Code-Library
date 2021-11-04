@@ -1,5 +1,5 @@
 '''
-    @Author Jared Scott 
+    @Author Jared Scott ☯
     This file stores the needed class defitions for a room in the dungeon
 '''
 

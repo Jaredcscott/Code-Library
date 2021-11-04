@@ -1,5 +1,5 @@
 '''  
-    @Author Jared Scott
+    @Author Jared Scott ☯
     This function will return a true or false representing whether or not the given number ('num') is prime
 '''
 import math 

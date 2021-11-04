@@ -1,5 +1,5 @@
 '''
-    @Author Jared Scott
+    @Author Jared Scott ☯
     Prob 37 of Project Euler 
 '''
 import math 

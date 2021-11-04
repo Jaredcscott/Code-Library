@@ -1,5 +1,5 @@
 '''
-    @Author Jared Scott
+    @Author Jared Scott ☯
     This script will identify a single pythagorean triple, whose sum (a+b+c) is 1000. 
     A Pythagorean triple is a set of numbers with this relationship a^2 + b^2 = c^2
 '''

@@ -1,5 +1,5 @@
 '''
-    @Author Jared Scott
+    @Author Jared Scott ☯
     Takes 3 inputs from the user, an interest rate, a loan amount, and a number of years.
     Performs some calculations and outputs an investment value after the given time period.
 '''

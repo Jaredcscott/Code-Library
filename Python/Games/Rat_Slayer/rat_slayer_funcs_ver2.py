@@ -1,7 +1,7 @@
 '''
     POORLY WRITTEN CODE WARNING
     
-    @Author Jared Scott 
+    @Author Jared Scott ☯
     
     This file contains the function definitions used within the Rat Slayer main program. 
     

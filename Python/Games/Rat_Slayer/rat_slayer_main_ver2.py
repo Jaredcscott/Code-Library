@@ -1,6 +1,6 @@
 '''
     RUN ME TO PLAY
-    @Author Jared Scott
+    @Author Jared Scott ☯
     This is the main file for Rat Slayer, adjust the parameters below to alter starting conditions.
 '''
 from rat_slayer_funcs_ver2 import *

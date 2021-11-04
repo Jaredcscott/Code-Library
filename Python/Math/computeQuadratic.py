@@ -1,5 +1,5 @@
 '''
-    @Author Jared Scott
+    @Author Jared Scott ☯
     This function can be used to compute the value of a simple quadratic equation 
     Implements:
         x^2 + ax + b

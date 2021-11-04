@@ -1,5 +1,5 @@
 '''
-    @Author Jared Scott
+    @Author Jared Scott ☯
     Code written to solve Prob 27 of Project Euler. Solved 7/28/21
     Run Time: 0:05 
 '''

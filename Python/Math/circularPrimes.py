@@ -1,5 +1,5 @@
 '''
-    @Author Jared Scott
+    @Author Jared Scott ☯
     Prob 35 of Project Euler Solved 7/28/21 
 '''
 

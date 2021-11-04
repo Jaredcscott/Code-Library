@@ -1,5 +1,5 @@
 '''
-    @Author Jared Scott 
+    @Author Jared Scott ☯
     This function implements the bubble sort algorithm to sort a list of NUMERIC values 
     This function will augment the list which is given as input
 '''

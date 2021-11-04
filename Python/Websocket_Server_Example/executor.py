@@ -1,5 +1,5 @@
 '''
-    @Author Jared Scott
+    @Author Jared Scott ☯
     This file defines a 'Executor' class which will initiate a listener and maintain a Watcher when needed 
     Acts as a central program file
 '''

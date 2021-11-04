@@ -1,5 +1,5 @@
 '''
-    @Author Jared Scott
+    @Author Jared Scott ☯
     This file defines a class which can be used to watch a file for changes, when changes are made to the designated file, 
     the given function will be called with the provided arguments
 '''

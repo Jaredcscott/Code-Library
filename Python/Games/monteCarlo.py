@@ -1,5 +1,5 @@
 '''
-    @Author Jared Scott
+    @Author Jared Scott ☯
 
     This program will play a door selection game, behind one door is a car and behind the other two are goats.
     The user will select a door, and then the "host" will reveal the location of one of the goats. The "host" will
