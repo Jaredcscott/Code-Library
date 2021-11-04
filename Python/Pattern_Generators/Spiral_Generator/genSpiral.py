@@ -1,5 +1,5 @@
 '''
-    Author: Jared Scott 
+    Author: Jared Scott ☯
 
     This script will generate a spiral pattern of cells. 
     A graphic representation of the pattern will display after completion. 
