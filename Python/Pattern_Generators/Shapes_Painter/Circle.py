@@ -1,5 +1,5 @@
 '''
-Jared Scott
+    @Author Jared Scott ☯
 This program defines the Circle class, and all of its needed methods. 
 '''
 
