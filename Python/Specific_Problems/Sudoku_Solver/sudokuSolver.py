@@ -1,5 +1,5 @@
 '''
-    @author Jared Scott 
+    @Author Jared Scott ☯
 '''
 import time
 def main():
