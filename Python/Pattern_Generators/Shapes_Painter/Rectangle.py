@@ -1,6 +1,6 @@
 '''
-Jared Scott
-This program defines the rectangle class, and all of its needed methods.
+    @Author Jared Scott ☯
+    This program defines the rectangle class, and all of its needed methods.
 '''
 
 import turtle
