@@ -1,6 +1,6 @@
 '''
-Jared Scott
-This program defines the main function for the shape drawing program.  
+    Jared Scott ☯
+    This program defines the main function for the shape drawing program.  
 '''
 
 
