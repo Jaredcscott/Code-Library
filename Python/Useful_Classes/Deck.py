@@ -1,3 +1,7 @@
+'''
+    @Author Jared Scott ☯
+'''
+
 import random
 from card import Card
 
