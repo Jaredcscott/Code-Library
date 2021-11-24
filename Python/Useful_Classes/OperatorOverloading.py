@@ -1,8 +1,8 @@
 '''
-Jared Scott
-This program shows how a custom class can overload operators to achieve various programming goals. 
-This allows an individual to create custom classes that can be operated on with traditional operators. 
-This also shows how two objects can be compared to each other IE the __lt__ and __gt__ operators. 
+    @Author Jared Scott ☯
+    This program shows how a custom class can overload operators to achieve various programming goals. 
+    This allows an individual to create custom classes that can be operated on with traditional operators. 
+    This also shows how two objects can be compared to each other IE the __lt__ and __gt__ operators. 
 '''
 
 def main():
@@ -18,7 +18,6 @@ def main():
     else:
         print("Object 2 is larger than object 1")
     
-
 class OperatorOverloading:
     def __init__(self,value):
         try:
@@ -53,5 +52,5 @@ class OperatorOverloading:
     def __str__(self):
         return "The value of this object is: " + str(self.__value)
         
-        
-main()
+if __name__ == '__main__':        
+    main()
