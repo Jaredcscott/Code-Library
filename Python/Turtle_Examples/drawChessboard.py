@@ -17,11 +17,9 @@ class Chessboard:
         self.__width = width
         self.__height = height
 
-
     def draw(self):
         turtle.speed(0)
         self.__draw_chessboard()
-
 
     def __draw_chessboard(self):
         turtle.penup()
