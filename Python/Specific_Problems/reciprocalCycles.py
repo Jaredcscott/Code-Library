@@ -1,4 +1,15 @@
-limit = 1000
+'''
+    @Author Jared Scott ☯
+    This finding cycles within the remainder if division. 
+'''
+
+def main():
+    limit = 1000
+
+    for i in range(2,11):
+        print("Remainder: ", end='')
+        countCycleLen(i,True)
+    print("Solution Found: ",solve(limit))
     
 def countCycleLen(number,printRem):
     '''
@@ -32,7 +43,5 @@ def solve(limit):
             longest = denom
     return longest
 
-for i in range(2,11):
-    print("Remainder: ", end='')
-    countCycleLen(i,True)
-print("Solution Found: ",solve(limit))
+if __name__ == '__main__':
+    main()
