@@ -1,12 +1,12 @@
 '''
-Jared Scott
-This file defined the class Password, and defines its needed methods.
-This password enforces the following requirements:
-    Password length <= 8 characters
-    Password must consist of only numbers and letters
-    Password must contain at least 2 numbers
-    Password cannot contain the word password
-    Password cannot end with "123"
+    @Author Jared Scott ☯
+    This file defined the class Password, and defines its needed methods.
+    This password enforces the following requirements:
+        Password length <= 8 characters
+        Password must consist of only numbers and letters
+        Password must contain at least 2 numbers
+        Password cannot contain the word password
+        Password cannot end with "123"
 '''
 
 def main():
@@ -118,5 +118,6 @@ class Password:
         if not self.__allTrue:
             self.getErrorMessage()
         return self.__allTrue
-
-main()
+    
+if __name__ == '__name__':
+    main()
