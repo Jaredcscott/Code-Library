@@ -1,4 +1,5 @@
 '''
+    @Author Jared Scott ☯
     This class can be used to navigate an undrawn 2d space with a turtle actor. 
     The turtle will record all points visited (accessible with the method <turtle>.getPoints())
 '''
