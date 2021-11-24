@@ -1,6 +1,6 @@
 '''
-Jared Scott
-This class can be used to store data relevant for a face card
+    @Author Jared Scott ☯
+    This class can be used to store data relevant for a face card
 '''
 
 class Card:
