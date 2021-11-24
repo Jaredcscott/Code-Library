@@ -1,4 +1,5 @@
 '''
+    @Author Jared Scott ☯
     This function will return the number of Digit Sums with 'limit' digits or less. 
     This algorithm is not very efficient and will take a while to complete on limits > 5
 '''
