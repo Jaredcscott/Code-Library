@@ -1,12 +1,15 @@
 '''
-Jared Scott
-This program draws a chessboard using the turtle library
-The class Chessboard is defined, and all of its necessary methods.
+    @Author Jared Scott ☯
+    This program draws a chessboard using the turtle library
+    The class Chessboard is defined, and all of its necessary methods.
 '''
-
 
 import turtle
 
+def main():
+    board = Chessboard(0,0)
+    board.draw()
+    
 class Chessboard:
     def __init__(self,start_x,start_y,width = 250, height = 250):
         self.__startx = start_x
@@ -61,7 +64,6 @@ class Chessboard:
                 rectangles += 1
             row += 1
 
-
     def __draw_rectangle(self):
         turtle.pendown()
         turtle.fillcolor("black")
@@ -77,6 +79,6 @@ class Chessboard:
         turtle.penup()
         turtle.seth(0)
         turtle.forward(self.__width/8)
-        
-board = Chessboard(0,0)
-board.draw()
+
+if __name__ == '__main__':
+    main()
