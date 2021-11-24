@@ -1,5 +1,6 @@
 '''
     @Author Jared Scott ☯
+    This class can be used to store data relevant for a deck of cards
 '''
 
 import random
