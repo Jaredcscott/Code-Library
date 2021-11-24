@@ -1,4 +1,5 @@
 '''
+    @Author Jared scott ☯
     This is an example of a date incrementing script. January 1st 1901
 '''
 
