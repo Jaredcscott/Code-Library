@@ -1,12 +1,43 @@
 '''
-Jared Scott
-This program will draw a face then present the user with a menu to alter various
-aspects of the face. The face will be redrawn after each selection with the desired
-settings. The program will loop until the user decides to quit.
+    @Author Jared Scott ☯
+    This program will draw a face then present the user with a menu to alter various
+    aspects of the face. The face will be redrawn after each selection with the desired
+    settings. The program will loop until the user decides to quit.
 '''
 
 import turtle
 
+def main():
+    face = Face()
+    face.draw_face()
+
+    done = False
+
+    while not done:
+        print("Change My Face")
+        mouth = "frown" if face.is_smile() else "smile"
+        emotion = "angry" if face.is_happy() else "happy"
+        eyes = "blue" if face.is_dark_eyes() else "black"
+        print("1) Make me", mouth)
+        print("2) Make me", emotion)
+        print("3) Make my eyes", eyes)
+        print("0) Quit")
+
+        menu = eval(input("Enter a selection: "))
+
+        if menu == 1:
+            face.change_mouth()
+        elif menu == 2:
+            face.change_emotion()
+        elif menu == 3:
+            face.change_eyes()
+        else:
+            break
+
+    print("Thanks for Playing")
+
+    turtle.hideturtle()
+    turtle.done()
 
 class Face:
     def __init__(self):
@@ -91,38 +122,5 @@ class Face:
             turtle.seth(130)
             turtle.circle(80,100)
 
-
-def main():
-    face = Face()
-    face.draw_face()
-
-    done = False
-
-    while not done:
-        print("Change My Face")
-        mouth = "frown" if face.is_smile() else "smile"
-        emotion = "angry" if face.is_happy() else "happy"
-        eyes = "blue" if face.is_dark_eyes() else "black"
-        print("1) Make me", mouth)
-        print("2) Make me", emotion)
-        print("3) Make my eyes", eyes)
-        print("0) Quit")
-
-        menu = eval(input("Enter a selection: "))
-
-        if menu == 1:
-            face.change_mouth()
-        elif menu == 2:
-            face.change_emotion()
-        elif menu == 3:
-            face.change_eyes()
-        else:
-            break
-
-    print("Thanks for Playing")
-
-    turtle.hideturtle()
-    turtle.done()
-
-
-main()
+if __name__ == '__main__':
+    main()
