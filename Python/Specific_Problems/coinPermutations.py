@@ -1,4 +1,5 @@
 '''
+    @Author Jared Scott ☯
     This script can be used to determine the various ways to combine a set of coin values to achieve a specified value (in this specific case 200 cents) 
 '''
 coins = [1,2,5,10,20,50,100]
