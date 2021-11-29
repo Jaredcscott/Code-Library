@@ -1,3 +1,7 @@
+'''
+    @Author Jared Scott ☯
+    This is an example of a listener using a regular socket (Not a Websocket)  
+'''
 import socket
 import random
 import time
