@@ -1,3 +1,8 @@
+'''
+    @Author Jared Scott ☯
+    Script uses websockets to connect to a remote server
+'''
+
 #import socket  # Import socket module
 
 #socket = socket.socket()  # Create a socket object
