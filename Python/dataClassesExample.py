@@ -1,3 +1,8 @@
+'''
+  @Author Jared Scott ☯
+  This is an example use of a dataclass decorator 
+'''
+
 from dataclasses import dataclass
 from datetime import datetime
 import requests
