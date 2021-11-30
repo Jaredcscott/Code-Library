@@ -1,6 +1,7 @@
 '''
   @Author Jared Scott ☯
 '''
+import math
 
 def getLesserPrimes(num):
     # This function will generate a list of all prime numbers which are less than the given number 
