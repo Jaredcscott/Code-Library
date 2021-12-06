@@ -1,6 +1,6 @@
 /**
  *
- * @author Jared
+ * @author Jared Scott ☯
  * This class defines the server logic for the chat system  
  */
 
