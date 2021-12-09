@@ -1,5 +1,5 @@
 /**
- * @author Jared Scott
+ * @author Jared Scott ☯
  * This class defines an Employee object, as well as its getter and setter methods.
  */
 
