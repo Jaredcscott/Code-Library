@@ -1,5 +1,5 @@
 /**
- *@Author: Jared Scott 
+ *@author Jared Scott ☯
  *This is a java implementation of a min heap (a data structure where the 'top' of the 'heap' is the minimum node within a tree (root).
  */
 
