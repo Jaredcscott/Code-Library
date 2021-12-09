@@ -1,6 +1,6 @@
 /**
  *PassiveLogic Project
- *@author Jared Scott
+ *@author Jared Scott ☯
  *Heat Flow Simulator 
  */
  

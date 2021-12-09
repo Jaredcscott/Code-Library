@@ -1,6 +1,6 @@
 /**
  *
- * @author Jared Scott
+ * @author Jared Scott ☯
  * This enum contains the different types of treasure possible.  
  *
  */

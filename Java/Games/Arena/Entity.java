@@ -1,6 +1,6 @@
 /**
  *
- * @author Jared Scott
+ * @author Jared Scott ☯
  * This class an Entity. Each Entity has a position
  * Super-class for Hero, Dragon, and Crate
  *

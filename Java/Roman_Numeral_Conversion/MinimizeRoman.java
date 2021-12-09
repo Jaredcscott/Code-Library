@@ -3,7 +3,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /*
- * @author Jared Scott
+ * @author Jared Scott ☯
  * 
  */
  

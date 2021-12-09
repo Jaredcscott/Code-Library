@@ -1,5 +1,5 @@
 /**
- * @author Jared Scott
+ * @author Jared Scott ☯
  * This class defines a MyDate object, as well as its getter and setter methods.
  */
 

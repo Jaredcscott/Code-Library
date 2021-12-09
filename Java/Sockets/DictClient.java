@@ -1,7 +1,6 @@
-/**
- *  CS 4720: Assignment 5 Sockets
- *  By Jared Scott 
- *  A01203464
+/*
+ * @author Jared Scott ☯
+ * 
  */
 
 import java.io.BufferedReader;

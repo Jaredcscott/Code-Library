@@ -1,5 +1,5 @@
 /**
- * @author Jared Scott
+ * @author Jared Scott ☯
  * This class instantiates and tests the various classes within this program.
  */
 

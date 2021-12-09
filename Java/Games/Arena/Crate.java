@@ -1,6 +1,6 @@
 /**
  *
- * @author Jared Scott
+ * @author Jared Scott ☯
  * This class defines a Crate entity. Each crate contains a single treasure. 
  *
  */

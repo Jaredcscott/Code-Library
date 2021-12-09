@@ -1,6 +1,6 @@
 /**
  *
- * @author Jared Scott
+ * @author Jared Scott ☯
  * This class defines a Dragon entity. Each Dragon has a color, only Golden 
  * dragons have treasure, which is gold coins.   
  *

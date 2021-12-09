@@ -1,6 +1,6 @@
 import java.util.Scanner;
 /**
- *@Author Jared Scott 
+ *@author Jared Scott ☯ 
  *This class implements the quadratic equation. Allowing a user to find the real roots of a quadratic equation. 
  *Input is entered one element at a time separated by enter key presses. 
  */

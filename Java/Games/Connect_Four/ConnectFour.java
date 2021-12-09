@@ -1,5 +1,5 @@
 /**
- * Jared Scott 
+ * @author Jared Scott ☯ 
  * 
  * Connect Four
  * 

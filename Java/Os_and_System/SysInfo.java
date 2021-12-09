@@ -1,5 +1,5 @@
 /**
- * @author Jared Scott 
+ * @author Jared Scott ☯
  * 
  */
 

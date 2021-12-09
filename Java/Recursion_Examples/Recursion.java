@@ -1,5 +1,5 @@
 /**
- * @author Jared Scott
+ * @author Jared Scott ☯
  * This class defines a few examples of recursion.
  */
 

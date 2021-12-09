@@ -1,9 +1,9 @@
-import java.math.BigInteger;
-
 /*
- * @author Jared Scott
+ * @author Jared Scott ☯
  * 
  */
+
+import java.math.BigInteger;
 
 public class IsPalindrome {
     /*

@@ -1,5 +1,5 @@
 /**
- * @ Jared Scott
+ * @author Jared Scott ☯
  * This class will construct a pyramid where the center number is always 1. 
  * The program accepts as input a number representing the desired pyramid height. 
  */

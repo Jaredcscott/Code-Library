@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /*
- * @author Jared Scott
+ * @author Jared Scott ☯
  * 
  */
  

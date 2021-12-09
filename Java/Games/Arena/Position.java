@@ -1,6 +1,6 @@
 /**
  *
- * @author Jared Scott
+ * @author Jared Scott ☯
  * This class defines the x and y position of an entity's in the arena.  
  *
  */

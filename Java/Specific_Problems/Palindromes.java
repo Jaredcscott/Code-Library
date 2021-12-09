@@ -1,10 +1,10 @@
-import java.util.ArrayList;
-import java.util.Collections;
-
 /*
- * @author Jared Scott
+ * @author Jared Scott ☯
  * 
  */
+
+import java.util.ArrayList;
+import java.util.Collections;
  
 public class Palindromes {
     /*

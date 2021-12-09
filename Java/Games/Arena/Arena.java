@@ -1,6 +1,6 @@
 /**
  *
- * @author Jared Scott
+ * @author Jared Scott ☯
  * This class defines an Arena class. An Arena is a 2 dimensional grid of  empty
  * spaces and Entity objects. The Arena's size is dynamically determined when it 
  * is created. Defines the needed methods to add entities to the arena, as well as move them

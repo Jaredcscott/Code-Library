@@ -1,6 +1,6 @@
 /**
  *
- * @author Jared Scott
+ * @author Jared Scott ☯
  * This class defines a Hero entity. The hero has an array containing 
  * treasures. The Hero can also attack other entities claiming their treasure 
  * or removing them from the arena. 
