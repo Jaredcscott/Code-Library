@@ -9,6 +9,7 @@
 ### Main Author: Jared Scott
 ## Additional Authors Featured
  - Skyler Hansen
+ - Craig Felto
 
 <br>(indicated within relevant files)
 #### Contributions are welcome! Please contact me if you would like to be added as a contributor to this repo
