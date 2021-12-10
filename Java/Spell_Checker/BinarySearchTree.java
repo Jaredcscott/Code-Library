@@ -1,6 +1,6 @@
 /**
- *
- * @author Jared Scott
+ * @author Jared Scott ☯
+ * 
  * This class defines a Binary search tree, with the needed methods to insert, remove, search, and display the value
  * of each node in the tree. This file also contains the class definition for a node in the tree.
  *

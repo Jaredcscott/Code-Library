@@ -1,6 +1,6 @@
 /**
- *
- * @author Jared Scott
+ * @author Jared Scott ☯
+ * 
  * This class defines a Spell Checking tool. The program will read in a dictionary file of words, and generate a binary
  * search tree containing all of the words in the dictionary file. The program will display stats on the tree, as well
  * as demonstrating the capability to correctly generate a binary search tree
