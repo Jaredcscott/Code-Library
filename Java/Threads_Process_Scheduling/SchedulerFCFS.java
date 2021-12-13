@@ -1,8 +1,9 @@
+/**
+ * @author Jared Scott ☯
+ */
+ 
 import java.util.LinkedList;
 
-/**
- * Jared Scott 
- */
 public class SchedulerFCFS extends SchedulerBase implements Scheduler {
     protected Platform platform;
     protected LinkedList<Process> processes;

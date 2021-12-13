@@ -1,5 +1,5 @@
 /**
- * Interface used by Schedulers to report scheduling events
+ * @author Jared Scott ☯
  */
 public interface Logger {
     void log(String message);

@@ -1,6 +1,7 @@
 /**
- * This interface defines the behaviors required of any scheduler.
+ * @author Jared Scott ☯
  */
+ 
 public interface Scheduler {
     /**
      * A scheduler must track the number of context switches performed during the simulation.

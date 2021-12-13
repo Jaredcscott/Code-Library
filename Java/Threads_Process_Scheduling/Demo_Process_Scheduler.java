@@ -1,9 +1,9 @@
+/**
+ * @author Jared Scott ☯
+ */
+
 import java.util.LinkedList;
 import java.util.Queue;
-
-/**
- * This is a demo of process scheduling using threading in Java 
- */
 
 public class Demo_Process_Scheduler {
 	

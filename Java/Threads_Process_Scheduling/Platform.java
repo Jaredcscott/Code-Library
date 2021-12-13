@@ -1,3 +1,7 @@
+/**
+ * @author Jared Scott ☯
+ */
+ 
 import java.util.Queue;
 
 /**

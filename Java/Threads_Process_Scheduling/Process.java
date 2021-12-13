@@ -1,7 +1,5 @@
 /**
- * Used to represent a Process for the scheduler simulation.  It only holds the information
- * necessary for a simulation, it isn't meant to be some mini version of the code used in
- * writing an actual operating system.
+ * @author Jared Scott ☯
  */
 public class Process {
     private String name;        // A name used to unique identify the process for reporting during the simulation

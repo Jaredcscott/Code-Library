@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 /**
- * Jared Scott 
+ * @author Jared Scott ☯
  */
 public class SchedulerSRTF extends SchedulerBase implements Scheduler {
     protected Platform platform;

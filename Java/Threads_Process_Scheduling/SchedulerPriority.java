@@ -1,8 +1,9 @@
+/**
+ * @author Jared Scott ☯
+ */
+
 import java.util.ArrayList;
 
-/**
- * Jared Scott 
- */
 public class SchedulerPriority extends SchedulerBase implements Scheduler  {
     protected Platform platform;
     protected ArrayList<Process> processes;
