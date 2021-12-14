@@ -1,7 +1,5 @@
 /**
- *
  * @author Jared Scott
- * 
  */
 public class LinkedList {
     public ListNode head;

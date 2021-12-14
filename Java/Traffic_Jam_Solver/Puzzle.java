@@ -1,3 +1,6 @@
+/**
+ * @author Jared Scott ☯
+ */
 import java.io.*;
 import java.util.*;
 
