@@ -1,5 +1,5 @@
 'Date:
-'Program author: Jared Scott
+'Program author: Jared Scott ☯
 
 Public stageKeyPressed As Boolean, joyKeyPressed As Boolean
 Dim xVolt, yVolt, joySwitchVolt, stageSwitchVolt, throttleVolt, 

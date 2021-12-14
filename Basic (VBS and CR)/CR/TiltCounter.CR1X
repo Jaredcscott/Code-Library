@@ -1,5 +1,5 @@
 'Date:
-'Program author:
+'Program author: Jared Scott ☯
 
 Public tilting As Boolean
 Public tiltSensor, tiltCount

@@ -1,3 +1,5 @@
+//@author Jared Scott ☯
+
 const mongoose = require("mongoose");
 const TestSchema = new mongoose.Schema({
 	category: {

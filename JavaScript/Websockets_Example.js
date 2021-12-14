@@ -1,3 +1,4 @@
+// @author Jared Scott ☯
 function sendCommand(command) {
 	var HOST = '192.168.176.54';
 	var PORT = '10321';

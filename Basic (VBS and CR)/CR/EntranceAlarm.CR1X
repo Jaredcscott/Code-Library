@@ -1,5 +1,5 @@
 'Date:
-'Program author:
+'Program author: Jared Scott ☯
 
 Public receiving As Boolean, transmitting As Boolean
 Public receiveVolt,tempRec

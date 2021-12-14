@@ -1,9 +1,5 @@
 /**
- * Jared Scott 
- * A01203464 
- * 
- * Final Project: Web Browser GUI
- * 
+ * @author Jared Scott ☯
  */
 
 import java.io.BufferedWriter;

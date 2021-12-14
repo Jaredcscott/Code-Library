@@ -1,5 +1,5 @@
 /*
-  @Author Jared Scott 
+  @author Jared Scott ☯
   This function uses the Date object to generate a string representation of the current date to the second
 */
 function getFormattedDate() {

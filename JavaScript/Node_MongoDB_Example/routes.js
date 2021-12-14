@@ -1,3 +1,5 @@
+//@author Jared Scott ☯
+
 const express = require("express");
 const testModel = require("./models");
 const app = express();

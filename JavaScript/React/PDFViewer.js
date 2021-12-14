@@ -1,3 +1,6 @@
+//@author Jared Scott ☯
+//Built from an example found here: https://www.npmjs.com/package/react-pdf
+
 import React, { useState } from "react";
 import { Document, Page } from "react-pdf";
 

@@ -1,5 +1,5 @@
 'Date: 6/24/21
-'Program author: Jared Scott
+'Program author: Jared Scott ☯
 'This program relies on RTMC to play the game.
 
 Public stageKeyPressed As Boolean, joyKeyPressed As Boolean, play As Boolean
