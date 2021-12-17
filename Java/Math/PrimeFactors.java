@@ -3,7 +3,7 @@ import java.util.Collections;
 
 /*
  * @author Jared Scott ☯
- * 
+ * This class will return the prime factros for any integer provided
  */
  
 public class PrimeFactors {
