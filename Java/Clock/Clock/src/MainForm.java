@@ -1,13 +1,14 @@
+/**
+ * @author Jared Scott ☯
+ * This class defines a clock which is always the top most application. This allows the user to use other applications while keeping this clock always visible on the screen. 
+ */
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
-/**
- *
- * @author Jared Scott ☯
- */
+
 public class MainForm extends javax.swing.JFrame {
 
     /**
