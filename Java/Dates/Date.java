@@ -1,8 +1,11 @@
 /**
  *
  * @author Jared Scott ☯
- * This class defines a generic date
- *
+ * This class defines a generic date with utilities such as: 
+ * - Adding days 
+ * - Subtracting days 
+ * - Different printing formats
+ * - Leap year calculation will be handled by the subclasses 
  */
 
 
