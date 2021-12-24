@@ -1,0 +1,30 @@
+rat:{
+  health:10,
+  atk:1,
+  def:1,
+  bravery:3
+},
+snake:{
+  health:8,
+  atk:2,
+  def:1,
+  bravery:3
+},
+turtle:{
+  health:15,
+  atk:1,
+  def:3,
+  bravery:1
+},
+wolf:{
+  health:25,
+  atk:4,
+  def:3,
+  bravery:8
+},
+bear:{
+  health:45,
+  atk:7,
+  def:5,
+  bravery:10
+},
