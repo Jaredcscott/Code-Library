@@ -7,6 +7,8 @@
  */
 
 public class Dragon extends Entity {
+    private String color;
+    private Treasure treasure;
     public Dragon(String color, int xPos, int yPos) {
         //Calls Entity constructor
         super(xPos,yPos);
@@ -30,7 +32,4 @@ public class Dragon extends Entity {
     public String toString() {
         return "The " + this.color + " dragon breathing fire at" + " (" + this.getPosition().x + ", " + this.getPosition().y + ")";
     }
-	
-	private String color;
-    private Treasure treasure;
 }
