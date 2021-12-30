@@ -4,6 +4,7 @@
 import React, { useState } from "react";
 import { Document, Page } from "react-pdf";
 
+//This is a React functional component 
 export default function PDFViewer(props) {
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1); //setting 1 to show first page
