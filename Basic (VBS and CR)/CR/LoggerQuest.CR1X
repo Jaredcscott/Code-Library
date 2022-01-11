@@ -1,0 +1,142 @@
+'Date: 6/24/21
+'Program author: Jared Scott ?
+'This program relies on RTMC to play the game.
+
+Public stageKeyPressed As Boolean, joyKeyPressed As Boolean, play As Boolean, inBattle As Boolean
+Public Message As String * 40
+'Public gameStateArray(5) As String * 40
+Public playerX, playerY
+Public xVolt, yVolt, joySwitchVolt, stageSwitchVolt, throttleVolt, speed
+Dim hlth, atk, def
+Dim ratHlth, ratAtk, ratDef
+
+
+DataTable (PlayerStats,True,3)
+  Sample (1,hlth,FP2)
+  Sample (1,atk,FP2)
+  Sample (1,def,FP2)
+EndTable
+
+Sub battleRat
+  Dim playerRoll, ratRoll
+  Do While hlth > 0 AND ratHlth > 0
+    Delay(1,1,Sec) 'This speed delay sets how quickly the snake moves around the map.
+    playerRoll = INT( ( (6+atk) - 1 + 1 ) * RND + 1 )
+    ratRoll = INT( ( (6+ratAtk) - 1 + 1 ) * RND + 1 )
+    If playerRoll > ratRoll Then
+      hlth = hlth - 1
+      Message = "Player hit Plyer Health: " & hlth
+    Else
+      ratHlth = ratHlth - 1
+      Message = "Rat hit Rat Health: " & ratHlth
+    EndIf
+  Loop
+  If hlth > 0 Then
+    Message = "Rat is slain!"
+  Else
+    Message = "You Are Dead :("
+  EndIf
+  inBattle = False
+  ratHlth = 5
+  hlth = 10
+EndSub
+
+Sub PlayGame
+  'Initializing game variables
+  CallTable PlayerStats
+  inBattle = False
+  playerX = 7
+  playerY = 7
+  speed = 50
+  play = False
+  Do Until play = True
+    'Loop waits for user to press play button
+    Message = ""
+  Loop
+  Message = ""
+  Do
+    Delay(1,speed,mSec) 'This speed delay sets how quickly the snake moves around the map.
+    VoltSe (xVolt,1,mV5000,1,False,20,30000,1.0,0) ' Reading x voltage
+    VoltSe (yVolt,1,mV5000,2,False,20,30000,1.0,0) ' Reading y voltage
+    VoltSe (stageSwitchVolt,1,mV5000,4,False,20,30000,1.0,0) ' Reading contoller button voltage
+    VoltSe (throttleVolt,1,mV5000,5,False,20,30000,1.0,0) ' Reading contoller button voltage
+    If stageSwitchVolt > 4600 Then
+      'Enter button pres logic
+      stageKeyPressed = True
+      Delay (0,500,mSec) ' Delay ensures one click only spends one point
+    Else
+      stageKeyPressed = False
+    EndIf
+    If joySwitchVolt < 250 Then
+      'Insert desired logic for joystick button
+      joyKeyPressed = True
+    Else
+      joyKeyPressed = False
+    EndIf
+    If (xVolt > 2400 AND xVolt < 2700) AND (yVolt > 2400 AND yVolt < 2700)  Then
+      'Rest
+    ElseIf xVolt < 1500 AND yVolt > 3500 Then
+      'Down-Right
+      playerX += .1
+      playerY -= .1
+    ElseIf (xVolt > 1500 AND xVolt < 3500) AND yVolt > 2500 Then
+      'Right
+      playerX += .1
+    ElseIf xVolt > 3500 AND yVolt > 3500 Then
+      'Up-Right
+      playerX += .1
+      playerY += .1
+    ElseIf xVolt > 2500 AND (yVolt > 1500 AND yVolt < 3500) Then
+      'Up
+      playerY += .1
+    ElseIf xVolt > 3500 AND yVolt < 1500 Then
+      'Up-Left
+      playerX -= .1
+      playerY += .1
+    ElseIf (xVolt > 1500 AND xVolt < 3500) AND yVolt < 2500 Then
+      'Left
+      playerX -= .1
+    ElseIf xVolt < 1500 AND yVolt < 1500 Then
+      'Down-Left
+      playerX -= .1
+      playerY -= .1
+    ElseIf xVolt < 2500 AND (yVolt > 1500 AND yVolt < 3500) Then
+      'Down
+      playerY -= .1
+    EndIf
+    If playerX > 10 AND playerX < 12 AND playerY > 12 AND playerY < 14 Then
+      inBattle = True
+      battleRat
+    Else
+      inBattle = False
+    EndIf
+    'Logic for looping around the map
+    If playerX > 20 Then
+      playerX = 0
+    ElseIf playerX < 0 Then
+      playerX = 20
+    EndIf
+    If playerY > 20 Then
+      playerY = 0
+    ElseIf playerY < 0 Then
+      playerY = 20
+    EndIf
+  Loop
+  play = false
+  'CallTable Scoreboard
+EndSub
+
+BeginProg
+  hlth = 10
+  atk = 3
+  def = 3
+  ratHlth = 5
+  ratAtk = 1
+  ratAtk = 1
+  'savedGameState = FileOpen ("CPU:savedQuestGame.txt","a+",-1)
+  'FileRead (savedGameState,gameStateArray(),270)
+  Do
+    PlayGame
+  Loop
+  'Slow sequence used for the timer countdown
+EndProg
