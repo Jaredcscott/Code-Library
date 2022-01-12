@@ -12,6 +12,7 @@
 
 def main():
     #Main function, defines the town graph and kicks off the recursive traversal function 
+     print("Performing a Depth-First Traversal of the graph") 
     visited_towns = []
     towns = {
         "Town_A": ["Town_B","Town_D","Town_E"],
