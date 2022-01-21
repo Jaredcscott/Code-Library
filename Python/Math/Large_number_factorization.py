@@ -33,7 +33,7 @@ def getDiv(num):
   return(len(factorsNew))
 
 def Function(num):
-  #Milestone values: 100000:3552444, 100000001:8234214342
+  #Milestone values: 100000:3552444, 500000:22352421, 100000001:8234214342
   print(("-"*15) + "\nSolving for: " + str(num) + "\nSeed:Sum Value")
   returns = []
   for i in range(1,num+1):
