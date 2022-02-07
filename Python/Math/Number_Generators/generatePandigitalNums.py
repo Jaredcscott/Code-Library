@@ -5,7 +5,6 @@
 '''
 def isPanDigital(num):
     nums = []
-    duplicateNums = False
     numStr = str(num)
     numLen = len(numStr)
     for char in numStr:
