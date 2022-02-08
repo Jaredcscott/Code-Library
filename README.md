@@ -7,7 +7,8 @@
                                                                __/ |  
                                                               |___/</pre> 
 ### Main Author: Jared Scott
-![Tools](https://projecteuler.net/profile/JaredScott.png "")
+![Alt text](https://projecteuler.net/profile/JaredScott.png "Euler_Badge")
+
 ## Additional Authors Featured
  - Skyler Hansen
  - Craig Felto
