@@ -1,9 +1,9 @@
-import java.util.Scanner;
 /**
  *@author Jared Scott ☯ 
  *This class implements the quadratic equation. Allowing a user to find the real roots of a quadratic equation. 
  *Input is entered one element at a time separated by enter key presses. 
  */
+import java.util.Scanner;
 public class Quadratic{
     public static void main(String[] arg){
         Scanner userInput = new Scanner(System.in);
