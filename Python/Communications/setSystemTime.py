@@ -11,12 +11,12 @@ import win32api
 
 def main(OFFSETS):
     #---CHANGE THESE VALUES---
-    YEAR         = 2021
-    MONTH        = 10
-    DAY_OF_MONTH = 15
+    YEAR         = 2022
+    MONTH        = 1
+    DAY_OF_MONTH = 1
     TIME_ZONE    = 'UTC'
-    HOUR         = 11
-    MINUTE       = 45
+    HOUR         = 9
+    MINUTE       = 13
     SECOND       = 0 
     MILLISECOND  = 0
     #-------------------------
