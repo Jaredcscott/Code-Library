@@ -1,0 +1,25 @@
+//@Author Jared Scott 
+//This file contains the logic for solving the first project euler question
+
+#include <iostream>
+
+double Fibonacci(double limit)
+{
+    int sum = 0;
+    int vala = 1;
+    int valb = 2;
+    int next = 0;
+    while (next <= limit) {
+        next = vala + valb;
+        sum += vala + valb;
+        vala = valb;
+        valb = next;
+
+    }
+    return sum;
+}
+
+int main()
+{
+    std::cout << Fibonacci(1000000);
+}
