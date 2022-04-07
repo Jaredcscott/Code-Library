@@ -38,7 +38,7 @@ def main():
 
 def genSetraData():
     randomValue = random.uniform(12,14)
-    dataString = "          in Hg A --" + "\x04"
+    dataString = "          in Hg A --" + "\x04" # Error Message
     return dataString
 
 def simulateSensor(conn):
