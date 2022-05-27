@@ -1,5 +1,5 @@
 //@Author Jared Scott 
-//This file contains the logic for solving the first project euler question
+//This file contains the logic for solving the second project euler question
 
 #include <iostream>
 #include <list> 
