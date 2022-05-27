@@ -1,3 +1,6 @@
+//@author Jared Scott 
+//This file will print a pyramid with numbers skewed to the left
+
 #include <iostream>
 #include <string>
 using namespace std;
