@@ -1,11 +1,23 @@
-file = open('dataFile.dat','r')
+file = open('input.dat','r')
 lines = file.readlines()
-output = open('processedData.dat','w')
+outlines = []
+count = 0
 for line in lines:
-    output.write(line.strip() + "\t0\n")     
-    #for i in range(5):
-        #output.write(line.strip() + "\t0\n")   #Used to duplicate the current value 
-    #    output.write("\n") #Used to add empty rows 
-        
+    data = line.split(' ')
+    if len(data) > 13:
+        if (data[6] == 'Var') :
+            col = data[13][:-2][0]
+            row = data[13][:-2][1:]
+            dVal = data[11].split(':')[:-1][0][1:-3]
+            dQua = data[11].split(':')[-1][1:-2]
+            outlines.append("Var:"+row+','+col+','+dVal+','+dQua+'\n') 
+        elif (data[6] == 'DebugChannels') :
+            dMes = ' '.join(data[8:-4])
+            dLoc = data[-1][:-2]
+            outlines.append("DEBUG:"+dLoc+','+dMes+'\n') 
+
+file.close()        
+file = open('outData.dat', "w")
+for line in outlines:
+    file.write(line) 
 file.close()
-output.close()
